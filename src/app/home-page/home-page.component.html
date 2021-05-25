@@ -1,0 +1,31 @@
+<p>home-page works!</p>
+
+<div>
+    <table>
+
+        <tr *ngFor="let movie of moviesList">
+            <td>{{ movie.id }}</td>
+            <td>{{ movie.title}}</td>
+            <td>{{ movie.releaseDate}}</td>
+            <td>{{ movie.ageLimited}}</td>
+            <td>{{ movie.duration}}</td>
+
+        </tr>
+    </table>
+</div>
+<br>
+<p>ICi on va essayer de rentrer un tite en base de données</p>
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group">
+
+        <label for="title"> Renseignez un titre </label>
+
+        <input type="text" id="title" class="form-control" name="title" ngModel>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+</form>
+
