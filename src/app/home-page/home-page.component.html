@@ -1,16 +1,17 @@
 <p>home-page works!</p>
 
 <div>
-    <table>
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr *ngFor="let movie of moviesList">
+                <td>{{ movie.id }}</td>
+                <td>{{ movie.title}}</td>
+                <td>{{ movie.releaseDate}}</td>
+                <td>{{ movie.ageLimited}}</td>
+                <td>{{ movie.duration}}</td>
 
-        <tr *ngFor="let movie of moviesList">
-            <td>{{ movie.id }}</td>
-            <td>{{ movie.title}}</td>
-            <td>{{ movie.releaseDate}}</td>
-            <td>{{ movie.ageLimited}}</td>
-            <td>{{ movie.duration}}</td>
-
-        </tr>
+            </tr>
+        </tbody>
     </table>
 </div>
 <br>
