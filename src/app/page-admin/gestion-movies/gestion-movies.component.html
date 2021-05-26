@@ -1,0 +1,43 @@
+
+  <div class="container">
+    <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a [routerLink]="['/page-admin']" class="nav-link active" aria-current="page">Overview</a></li>
+        <li class="nav-item"><a [routerLink]="['/gestion-movies']" class="nav-link">Films</a></li>
+        <li class="nav-item"><a [routerLink]="['/gestion-rooms']" class="nav-link">Salles</a></li>
+        <li class="nav-item"><a [routerLink]="['/gestion-schedules']" class="nav-link">Horaires</a></li>
+        <li class="nav-item"><a [routerLink]="['/gestion-film-showes']" class="nav-link">Séances</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <h1>Section Admin </h1>
+  <h3>Gestion des films</h3>
+
+
+  <div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Producteur</th>
+            <th scope="col">Date de sortie</th>
+            <th scope="col">Durée</th>
+            <th scope="col">Limite d'âge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of moviesList; let i = index">
+            <td>{{ movie.title }}</td>
+            <td>{{ movie.producer }}</td>
+            <td>{{ movie.releaseDate }}</td>
+            <td>{{ movie.duration }}</td>
+            <td>{{ movie.ageLimited }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

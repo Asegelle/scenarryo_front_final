@@ -9,7 +9,7 @@ export class Movie {
     synopsis?:string;
     duration?:string;
     poster?:string;
-    //movieShow?:Show[];
+    //movieShow?:FilmShow[];
 
     constructor(id?: number, title?:string, producer?:string,releaseDate?:Date,ageLimited?:string, synopsis?:string, duration?:string, poster?:string){
         this.id=id;

@@ -11,6 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieWebService } from './shared/webservices/movie/movie.webservice';
 import { MovieService } from './shared/services/movie/movie.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PageOnDisplayComponent } from './page-on-display/page-on-display.component';
+import { PageBookingComponent } from './page-booking/page-booking.component';
+import { PageMovieDetailsComponent } from './page-movie-details/page-movie-details.component';
+import { PageContactComponent } from './page-contact/page-contact.component';
+import { PageAdminComponent } from './page-admin/page-admin.component';
+import { GestionMoviesComponent } from './page-admin/gestion-movies/gestion-movies.component';
+import { GestionRoomsComponent } from './page-admin/gestion-rooms/gestion-rooms.component';
+import { GestionSchedulesComponent } from './page-admin/gestion-schedules/gestion-schedules.component';
+import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
+
 
 
 @NgModule({
@@ -18,7 +28,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AppComponent,
     HomePageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PageOnDisplayComponent,
+    PageBookingComponent,
+    PageMovieDetailsComponent,
+    PageContactComponent,
+    PageAdminComponent,
+    GestionMoviesComponent,
+    GestionRoomsComponent,
+    GestionSchedulesComponent,
+    GestionFilmShowesComponent
   ],
   imports: [
     BrowserModule,

@@ -52,20 +52,20 @@
         <div class="row">
           <!--Grid column-->
           <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Links</h5>
-  
+            <h5 class="text-uppercase">Menu</h5>
+
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a [routerLink]="['/home-page']" class="text-white">Accueil</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 2</a>
+                <a [routerLink]="['/page-on-display']" class="text-white">A l'Affiche</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 3</a>
+                <a [routerLink]="['/page-booking']" class="text-white">Réservation</a>
               </li>
               <li>
-                <a href="#!" class="text-white">Link 4</a>
+                <a [routerLink]="['/page-contact']" class="text-white">Contact</a>
               </li>
             </ul>
           </div>
@@ -77,7 +77,7 @@
   
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="#!" class="text-white">Link 1</a>
+                <a [routerLink]="['/page-admin']" class="text-white">Admin</a>
               </li>
               <li>
                 <a href="#!" class="text-white">Link 2</a>
