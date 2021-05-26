@@ -20,6 +20,7 @@ import { GestionMoviesComponent } from './page-admin/gestion-movies/gestion-movi
 import { GestionRoomsComponent } from './page-admin/gestion-rooms/gestion-rooms.component';
 import { GestionSchedulesComponent } from './page-admin/gestion-schedules/gestion-schedules.component';
 import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
+import { RoomWebService } from './shared/webservices/room/room.webservice';
 
 
 
@@ -49,7 +50,8 @@ import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/ges
   ],
   providers: [
     MovieService,
-    MovieWebService
+    MovieWebService,
+    RoomWebService
   ],
   bootstrap: [AppComponent]
 })

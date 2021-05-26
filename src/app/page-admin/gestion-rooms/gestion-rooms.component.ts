@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Room } from 'src/app/shared/models/room';
+import { RoomWebService } from 'src/app/shared/webservices/room/room.webservice';
 
 @Component({
   selector: 'app-gestion-rooms',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionRoomsComponent implements OnInit {
 
-  constructor() { }
+  roomList:Room[] =[];
+  constructor(private roomWebService : RoomWebService) { }
 
   ngOnInit(): void {
+    this.roomWebService.getRooms()
+    .subscribe( data => {
+      console.log('data');
+      this.roomList = data;
+    })
   }
 
 }
