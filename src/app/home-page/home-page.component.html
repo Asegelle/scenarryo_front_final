@@ -1,20 +1,35 @@
 <p>home-page works!</p>
 
-<div>
-    <table class="table table-bordered table-striped">
-        <tbody>
-            <tr *ngFor="let movie of moviesList">
-                <td>{{ movie.id }}</td>
-                <td>{{ movie.title}}</td>
-                <td>{{ movie.releaseDate}}</td>
-                <td>{{ movie.ageLimited}}</td>
-                <td>{{ movie.duration}}</td>
 
-            </tr>
+<div class="card my-5">
+    <div class="card-body">
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Affiche</th>
+            <th scope="col">Producteur</th>
+            <th scope="col">Date de sortie</th>
+            <th scope="col">Durée</th>
+            <th scope="col">Limite d'âge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movie of moviesList; let i = index">
+            <td>{{ movie.title }}</td>
+            <td><img src="{{ movie.poster }}" width="100"></td>
+            <td>{{ movie.producer }}</td>
+            <td>{{ movie.releaseDate }}</td>
+            <td>{{ movie.duration }}</td>
+            <td>{{ movie.ageLimited }}</td>
+          </tr>
         </tbody>
-    </table>
-</div>
-<br>
+      </table>
+    </div>
+  </div>
+
+
+
 <p>ICi on va essayer de rentrer un tite en base de données</p>
 
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
