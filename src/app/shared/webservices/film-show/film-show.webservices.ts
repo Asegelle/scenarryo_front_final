@@ -11,7 +11,6 @@ import { FilmShow } from '../../models/film-show';
 export class FilmShowWebService {
   
   private urlFilmShowes: string;
-  filmShow = FilmShow;
   
 
   constructor( private http: HttpClient) {

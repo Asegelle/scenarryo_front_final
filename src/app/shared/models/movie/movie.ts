@@ -1,3 +1,5 @@
+import { FilmShow } from "../film-show";
+
 export class Movie {
             
 
@@ -9,9 +11,9 @@ export class Movie {
     synopsis?:string;
     duration?:string;
     poster?:string;
-    //movieShow?:FilmShow[];
+    filmShow?:FilmShow[];
 
-    constructor(id?: number, title?:string, producer?:string,releaseDate?:Date,ageLimited?:string, synopsis?:string, duration?:string, poster?:string){
+    constructor(id?: number, title?:string, producer?:string,releaseDate?:Date,ageLimited?:string, synopsis?:string, duration?:string, poster?:string,filmShow?:FilmShow[]){
         this.id=id;
         this.title=title;
         this.producer=producer;
@@ -20,7 +22,7 @@ export class Movie {
         this.synopsis=synopsis;
         this.duration=duration;
         this.poster=poster;
-        //this.movieShow=movieShow;
+        this.filmShow=filmShow;
 
     }
 

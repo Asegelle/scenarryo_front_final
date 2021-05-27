@@ -12,7 +12,7 @@ export class RoomWebService{
   // room : Room;
 
   constructor(private http : HttpClient){
-    this.urlRoom = 'http://localhost:8080/room/get-all';
+    this.urlRoom = 'http://localhost:8080/admin/room';
   }
   getRooms():Observable<Room[]>{
 

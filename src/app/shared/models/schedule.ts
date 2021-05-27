@@ -7,16 +7,16 @@ export class Schedule {
     showDate?:Date;
     startingHour?:string;
     endingHour?:string;
-    //scheduleShow?:FilmShow[];
+    filmShow?:FilmShow[];
 
     //movieShow?:FilmShow[];
 
-    constructor(id?: number, showDate?:Date, startingHour?:string,endingHour?:string){
+    constructor(id?: number, showDate?:Date, startingHour?:string,endingHour?:string,filmShow?:FilmShow[] ){
         this.id=id;
         this.showDate=showDate;
         this.startingHour=startingHour;
         this.endingHour=endingHour;
-        //this.scheduleShow=scheduleShow;
+        this.filmShow=filmShow;
 
 
     }
