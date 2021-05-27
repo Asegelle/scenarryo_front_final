@@ -33,8 +33,8 @@
           <tr *ngFor="let filmSHow of filmShowesList; let i = index">
             <td>{{ filmSHow.bookedSeats }}</td>
             <td>{{ filmSHow.priceTicket }}</td>
-            <td>{{ filmSHow.showMovie.title }}</td>
-            <td>{{ filmSHow.showSchedule.showDate }}</td>
+            <td>{{ filmSHow.showMovie }}</td>
+            <td>{{ filmSHow.showSchedule }}</td>
             <td>{{ filmSHow.showRoom.roomNumber }}</td>
           </tr>
         </tbody>
@@ -43,3 +43,4 @@
   </div>
 
    
+  

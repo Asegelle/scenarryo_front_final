@@ -17,6 +17,51 @@
   <h3>Gestion des horaires</h3>
 
 
+  <div class="card my-5 col-3">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmitAddSchedule()" #scheduleForm="ngForm">
+        
+        <div class="form-group">
+          <label for="showDate">Heure de début :</label>
+          <input type="date" [(ngModel)]="schedule.showDate"
+            class="form-control" 
+            id="showDate" 
+            name="showDate" 
+            placeholder="Heure de début">
+        </div>
+
+        <div class="form-group">
+          <label for="startingHour">Heure de début :</label>
+          <input type="time" [(ngModel)]="schedule.startingHour"
+            class="form-control" 
+            id="startingHour" 
+            name="startingHour" 
+            placeholder="Heure de début">
+        </div>
+
+        <div class="form-group">
+          <label for="endingHour">Heure de fin :</label>
+          <input type="time" [(ngModel)]="schedule.endingHour" 
+            class="form-control" 
+            id="endingHour" 
+            name="endingHour" 
+            placeholder="Heure de fin">
+        </div>
+
+        <div *ngIf="submitted">L'horaire a été envoyé avec succès</div>
+
+        <br>
+        <div>
+          <button type="submit"
+            class="btn btn-success"><i class="fa fa-plus"></i>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+
   <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -25,6 +70,7 @@
             <th scope="col">Date</th>
             <th scope="col">Heure de début</th>
             <th scope="col">Heure de fin</th>
+            <th scope="col">Action</th>
 
           </tr>
         </thead>
@@ -33,6 +79,15 @@
             <td>{{ schedule.showDate }}</td>
             <td>{{ schedule.startingHour }}</td>
             <td>{{ schedule.endingHour }}</td>
+            <td>
+              <button 
+              class="btn btn-danger"
+              (click)="handleClickDeleteSchedule(schedule.id)"
+              >
+                  <i class="fa fa-trash"></i>
+              </button>
+          </td>
+
           </tr>
         </tbody>
       </table>
