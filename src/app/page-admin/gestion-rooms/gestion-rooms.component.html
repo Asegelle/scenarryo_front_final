@@ -13,7 +13,24 @@
   </div>
 
 
-  <h1>Section Admin </h1>
+  <h2>Section Admin </h2>
+  <h3>Ajouter une nouvelle salle </h3>
+  <form (ngSubmit)="handleClickAddRoom(formAddRoom)" #formAddRoom="ngForm">
+          <div class="row">
+              <div class="col-2">
+                  <input name="roomNumber" class="form-control" placeholder="Numéro salle" ngModel>
+              </div>
+              <div class="col-2">
+                  <input name="seatsQuantity" class="form-control" placeholder="Nombre de place" ngModel>
+              </div>
+              
+              <div class="col-2">
+                  <button type="submit" class="btn btn-success">
+                      <i class="fa fa-plus"></i>
+                  </button>
+              </div>
+            </div> 
+          </form>
   <h3>Gestion des salles</h3>
 
   <div class="card my-5">
@@ -24,6 +41,7 @@
             <th scope="col">Numéro de la salle</th>
             <th scope="col">Nombre de place</th>
             <th scope="col">Nombre de séance programmé</th>
+            <th scope="col">Actions </th>
             
           </tr>
         </thead>
@@ -32,6 +50,12 @@
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.seatsQuantity }}</td>
             <td>{{ room.filmShow.length }}</td>
+            <td>
+              <button class="btn btn-danger"
+                      (click) = "handleClickDeleteRoom(room.id)"
+              ><i class="fa fa-trash"></i>
+              </button>
+            </td>
             
           </tr>
         </tbody>
