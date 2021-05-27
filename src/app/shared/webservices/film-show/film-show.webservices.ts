@@ -10,18 +10,14 @@ import { FilmShow } from '../../models/film-show';
 })
 export class FilmShowWebService {
   
-  private urlFilmShowes: string;
-  
+  private filmShowUrl = 'http://localhost:8080/admin/film-show';
 
-  constructor( private http: HttpClient) {
-    this.urlFilmShowes= 'http://localhost:8080//admin/film-show';
-   }
+
+  constructor( private http: HttpClient) { }
 
   getFilmShowes(): Observable<FilmShow[]> {
-    
-    console.log(this.http.get<FilmShow[]>(this.urlFilmShowes ));
-
-    return this.http.get<FilmShow[]>(this.urlFilmShowes);
+    console.log(this.http.get<FilmShow[]>(`${this.filmShowUrl}/get`));
+    return this.http.get<FilmShow[]>(`${this.filmShowUrl}/get`);
   }
 
   
