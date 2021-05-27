@@ -41,3 +41,20 @@
       </table>
     </div>
   </div>
+
+
+  <p>Ici on va essayer de rentrer un titre en base de données</p>
+
+<form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)">
+
+    <div class="form-group">
+
+        <label for="title"> Renseignez un titre </label>
+
+        <input  type="text" id="title" class="form-control" name="title" [(ngModel)]="title">
+      
+
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+
+</form>

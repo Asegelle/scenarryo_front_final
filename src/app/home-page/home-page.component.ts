@@ -36,15 +36,5 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  //   getMovie() {
-  //     this.movieWebService.getMovies().subscribe(
-  //       (data) => {
-  //         console.log(data);
-  //       }, (error) =>{
-  //         console.log(error);
-  //       }, () => {
-
-  //       }
-  //     );
-  // }
+  
 }

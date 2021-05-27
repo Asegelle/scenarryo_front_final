@@ -11,6 +11,7 @@ import { MovieWebService } from 'src/app/shared/webservices/movie/movie.webservi
 export class GestionMoviesComponent implements OnInit {
 
   moviesList: Movie[] = [];
+  title: string;
 
 
   constructor( private movieWebService: MovieWebService) { }
@@ -23,10 +24,34 @@ export class GestionMoviesComponent implements OnInit {
       });
   }
 
-  onSubmit(form: NgForm) {
-    console.log(form.value['title']);
+
+  // Fonction ajout d'un film en base de donnée  
+  onSubmit(formAddMovie: NgForm) {
+    console.log(formAddMovie.value);
     
+    this.movieWebService.addMovies(formAddMovie.value).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
   }
+
+    // recherche de films par titre
+
+  handleClickFindMovie(formFindMovie: NgForm) {
+    console.log(formFindMovie.value['title']);
+    // this.title = formFindMovie.value['title'];
+    console.log('ta mère' + this.title);
+    
+    this.movieWebService.getMoviesByTitle(formFindMovie.value['title']).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
+  }
+
+
+
 
   onDestroy() {
 
