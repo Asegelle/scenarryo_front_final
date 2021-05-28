@@ -1,3 +1,4 @@
+import { ApiMovieWebService } from './shared/webservices/api-movie/apiMovie.webservice';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -44,14 +45,14 @@ import { RoomWebService } from './shared/webservices/room/room.webservice';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FormsModule
     
   ],
   providers: [
     MovieService,
     MovieWebService,
-    RoomWebService
+    RoomWebService,
+    ApiMovieWebService
   ],
   bootstrap: [AppComponent]
 })

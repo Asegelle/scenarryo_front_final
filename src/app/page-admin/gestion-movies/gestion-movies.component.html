@@ -58,3 +58,42 @@
     <button type="submit" class="btn btn-primary">Rechercher</button>
 
 </form>
+
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">Producteur</th>
+          <th scope="col">Date de sortie</th>
+          <th scope="col">Durée</th>
+          <th scope="col">Limite d'âge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movieApi of moviesListApi; let i = index">
+          <td>{{ movieApi.Title }}</td>
+          <td><img src="{{ movieApi.Poster }}" width="100"></td>
+          <td>{{ movieApi.Runtime }}</td>
+          <td>{{ movieApi.Released }}</td>
+          <td>{{ movieApi.Plot }}</td>
+          <td>{{ movieApi.Rating }}</td>
+          <td>{{ movieApi.Type }}</td>
+          <td>{{ movieApi.Title }}</td>
+
+        
+          <td>
+            <button (click)="handleClickAddMovie(movieApi)" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+            </button>
+        </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div>
+  {{ this.moviesListApi }}
+</div>
