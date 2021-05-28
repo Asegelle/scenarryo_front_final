@@ -14,14 +14,14 @@ export class FilmShowWebService {
   
 
   constructor( private http: HttpClient) {
-    this.urlFilmShowes= 'http://localhost:8080//admin/film-show';
+    this.urlFilmShowes= 'http://localhost:8080/admin/film-show/';
    }
 
   getFilmShowes(): Observable<FilmShow[]> {
     
     console.log(this.http.get<FilmShow[]>(this.urlFilmShowes ));
 
-    return this.http.get<FilmShow[]>(this.urlFilmShowes);
+    return this.http.get<FilmShow[]>(this.urlFilmShowes+'getAll');
   }
 
   

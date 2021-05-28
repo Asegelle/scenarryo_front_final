@@ -16,21 +16,24 @@
   <h2>Section Admin </h2>
   <h3>Ajouter une nouvelle salle </h3>
   <form (ngSubmit)="handleClickAddRoom(formAddRoom)" #formAddRoom="ngForm">
-          <div class="row">
-              <div class="col-2">
-                  <input name="roomNumber" class="form-control" placeholder="Numéro salle" ngModel>
-              </div>
-              <div class="col-2">
-                  <input name="seatsQuantity" class="form-control" placeholder="Nombre de place" ngModel>
-              </div>
-              
-              <div class="col-2">
-                  <button type="submit" class="btn btn-success">
-                      <i class="fa fa-plus"></i>
-                  </button>
-              </div>
-            </div> 
-          </form>
+    <div class="row">
+        <div class="col-2">
+            <input name="roomNumber" class="form-control" placeholder="Numéro salle" ngModel>
+        </div>
+        <div class="col-2">
+            <input name="seatsQuantity" class="form-control" placeholder="Nombre de place" ngModel>
+        </div>
+        
+        <div class="col-2">
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+      </div> 
+      <div class="row">
+        
+      </div>
+    </form>
   <h3>Gestion des salles</h3>
 
   <div class="card my-5">
