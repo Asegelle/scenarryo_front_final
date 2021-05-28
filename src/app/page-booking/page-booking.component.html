@@ -1,51 +1,130 @@
 <h1>Réservation</h1>
 
 
-<div class="card my-5 col-4">
-    <div class="card-body">
-        <form (ngSubmit)="onSubmitBooking()" #bookingForm="ngForm">
 
-            <div class="form-group">
-                <label>Sélection du film : </label>
-                <div>
-                    <select class="form-select">
-                        <option value="0">choisir un film</option>
-                        <option value="1">Harry Potter à l'école des sorciers</option>
-                        <option value="2">Harry Potter et le prisonnier d'Azkaban</option>
-                    </select>
-                </div>
-            </div>
-            
-            <br>
-            <div class="form-group">
-                <label>Sélection du jour : </label>
-                <div>
-                    <input type="date" class="form-control"/>
-                </div>
-            </div>
 
-            <br>
-            <div class="form-group">
-                <label>Sélection de la séance : </label>
-                <div>
-                    <select class="form-select">
-                        <option value="0">choisir une séance</option>
-                        <option value="0">10:00 - 12:00</option>
-                        <option value="1">12:00 - 14:00</option>
-                        <option value="2">14:00 - 16:00</option>
-                        <option value="0">16:00 - 18:00</option>
-                        <option value="1">18:00 - 20:00</option>
-                        <option value="2">20:00 - 22:00</option>
-                    </select>
-                </div>
-            </div>
+<div class="d-flex flex-row bd-highlight mb-0">
 
-            <br>
-            <div>
-                <button type='submit' class="btn btn-success">Réserver</button>
-            </div>
+    <div class="ms-3 p-2 w-100 bd-highlight pb-0">
+        <div class="card my-5 col-11 mb-0 ">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmitBooking()" required #bookingForm="ngForm">
+                    <div class="form-group">
+                        <label for="movie">Sélection du film * :</label>
+                        <select type="select" 
+                          class="form-select"
+                          id="movie"
+                          name="movie"
+                          [(ngModel)]="movie"
+                          placeholder="titre du film"
+                          >
+                            <option></option>
+                            <option [ngValue]="movie" *ngFor="let movie of moviesList; let i = index">
+                                
+                                {{ movie.title }}
+                            </option>
+                        </select>
 
-        </form>
+                    </div>
+        
+                    <br>
+                    <div class="form-group">
+                        <label for="schedule.showDate">Sélection du jour * : </label>
+                        <div>
+                            <input type="date" [(ngModel)]="schedule.showDate" 
+                            class="form-control"
+                            id="schedule.showDate"
+                            required
+                            name="schedule.showDate"
+                            placeholder="date"                    
+                            />
+                        </div>
+                    </div>
+        
+                    <br>
+                    <div class="form-group">
+                        <label for="schedule.startingHour">Sélection de l'horaire * :</label>
+                        <select type="select" [(ngModel)]="schedule.startingHour"
+                          class="form-select"
+                          id="schedule.startingHour"
+                          required
+                          name="schedule.startingHour"
+                          placeholder="horaire"
+                        >
+                            <option></option>
+                            <option *ngFor="let schedule of schedulesList; let i = index">
+                                {{ schedule.startingHour }} - 
+                                {{ schedule.endingHour }}</option>
+                        </select>
+                    </div>
+        
+                    <br>
+                    <div>
+                        <button type='submit' class="btn btn-success">Réserver</button>
+                    </div>
+                    <div *ngIf="bookingForm.invalid"> 
+                        * Champs requis. 
+                      </div> 
+                </form>
+            </div>
+        </div>
     </div>
-</div>
+
+    <div class="app-booking-details me-3 p-2 bd-highlight">
+        
+            <div class="card my-5 col-12">
+                <div class=" card-body">
+
+
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="ms-3 p-2 w-100 bd-highlight">
+
+                            <h3 class="mb-2">Votre sélection</h3>
+
+                            <article class="mb-2"> Titre : {{ movie.title}}</article>
+                            <article class="mb-2"> Producteur : {{ movie.producer }}</article>
+                            <article class="mb-2"> Durée : {{ movie.duration }}</article>
+                            <article class="text-justify crop-text-2 mb-2"> Synopsis : {{ movie.synopsis }}</article>
+
+                        </div>
+
+                        <div class="app-booking-poster me-3 p-2 bd-highlight">
+
+                            <img src="{{ movie.poster }}" width="200">
+
+                        </div>
+                    </div>
+                
+                </div>
+             </div>
+            
+        
+    </div>
+  </div>
+
+  <div *ngIf="submitted">
+    <div class="ms-3 p-2 w-100 bd-highlight">
+        <div class="card my-5 col-4 mt-0">
+
+            
+                <div>Film : {{ movie.title }}</div>
+                <div>Date : {{ schedule.showDate }}</div>
+                <div>Horaire : {{ schedule.startingHour }}</div>
+                <br>
+                <div class="fw-bold">Réservation faite avec succès</div>
+            
+
+        </div>
+    </div>    
+  </div>
+
+ 
+
+
+  
+
+
+
+
+
 
