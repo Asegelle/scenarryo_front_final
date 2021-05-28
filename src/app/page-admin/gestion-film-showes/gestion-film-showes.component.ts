@@ -20,6 +20,7 @@ export class GestionFilmShowesComponent implements OnInit {
     this.filmShowWebService.getFilmShowes()
       .subscribe(data => {
         this.filmShowesList = data;
+        console.log(this.filmShowesList);
       });
   }
 

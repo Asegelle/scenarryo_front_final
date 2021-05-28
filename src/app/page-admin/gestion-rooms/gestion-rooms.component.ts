@@ -47,6 +47,7 @@ export class GestionRoomsComponent implements OnInit {
     this.roomWebService.getRooms()
     .subscribe( data => {
       this.roomList = data;
+      console.log(this.roomList[0].filmShow);
     })
   }
 

@@ -16,8 +16,7 @@ export class FilmShowWebService {
   constructor( private http: HttpClient) { }
 
   getFilmShowes(): Observable<FilmShow[]> {
-    console.log(this.http.get<FilmShow[]>(`${this.filmShowUrl}/get`));
-    return this.http.get<FilmShow[]>(`${this.filmShowUrl}/get`);
+    return this.http.get<FilmShow[]>(`${this.filmShowUrl}/getAll`);
   }
 
   
