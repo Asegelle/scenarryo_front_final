@@ -12,4 +12,9 @@ export class PageBookingComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  onSubmitBooking(){
+    
+  }
+
 }

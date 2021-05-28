@@ -13,6 +13,7 @@ export class GestionSchedulesComponent implements OnInit {
   schedulesList: Schedule[] = [];
   emptySchedule: Schedule = new Schedule();
   submitted:boolean = false;
+  message:string = "";
 
   schedule: Schedule = {
     showDate:undefined,
@@ -45,21 +46,34 @@ export class GestionSchedulesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSchedules();
+    this.message = "";
   }
 
 
-
+  text:string = "17:17:00";
 
 
   handleClickDeleteSchedule(id:number):void{
     this.scheduleWebService.deleteSchedules(id)
-    .subscribe(data => {
-      console.log(data);
+    .subscribe(response => {
+      console.log(response);
       this.getSchedules();
     },
     error => {
       console.log(error);
     });
+  }
+
+
+  handleClickUpdateSchedule(id:number):void{
+    this.scheduleWebService.updateSchedules(id, this.schedule)
+    .subscribe(response => {
+      console.log(response);
+      this.schedule.showDate = response.showDate;
+      this.schedule.startingHour = response.startingHour;
+      this.schedule.endingHour = response.endingHour;
+
+    })
   }
 
 

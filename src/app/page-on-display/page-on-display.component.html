@@ -17,7 +17,11 @@
         <tbody>
           <tr *ngFor="let movie of moviesList; let i = index">
             <td>{{ movie.title }}</td>
-            <td><img src="{{ movie.poster }}" width="100"></td>
+            <td><p><img src="{{ movie.poster }}" width="100"></p>
+              <button class="btn btn-warning">
+                <i>Détails</i>
+              </button>
+            </td>
             <td>{{ movie.producer }}</td>
             <td>{{ movie.releaseDate }}</td>
             <td>{{ movie.duration }}</td>

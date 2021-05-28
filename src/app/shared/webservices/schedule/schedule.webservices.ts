@@ -33,5 +33,10 @@ export class ScheduleWebService {
   }
 
 
+  updateSchedules(id:number, schedule:Schedule): Observable<Schedule>{
+    console.log(this.http.put<Schedule>(`${this.scheduleUrl}/update/${id}`, schedule));
+    return this.http.put<Schedule>(`${this.scheduleUrl}/update/${id}`, schedule); 
+  }
+
 
 }

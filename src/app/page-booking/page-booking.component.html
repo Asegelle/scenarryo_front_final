@@ -1,2 +1,51 @@
 <h1>Réservation</h1>
 
+
+<div class="card my-5 col-4">
+    <div class="card-body">
+        <form (ngSubmit)="onSubmitBooking()" #bookingForm="ngForm">
+
+            <div class="form-group">
+                <label>Sélection du film : </label>
+                <div>
+                    <select class="form-select">
+                        <option value="0">choisir un film</option>
+                        <option value="1">Harry Potter à l'école des sorciers</option>
+                        <option value="2">Harry Potter et le prisonnier d'Azkaban</option>
+                    </select>
+                </div>
+            </div>
+            
+            <br>
+            <div class="form-group">
+                <label>Sélection du jour : </label>
+                <div>
+                    <input type="date" class="form-control"/>
+                </div>
+            </div>
+
+            <br>
+            <div class="form-group">
+                <label>Sélection de la séance : </label>
+                <div>
+                    <select class="form-select">
+                        <option value="0">choisir une séance</option>
+                        <option value="0">10:00 - 12:00</option>
+                        <option value="1">12:00 - 14:00</option>
+                        <option value="2">14:00 - 16:00</option>
+                        <option value="0">16:00 - 18:00</option>
+                        <option value="1">18:00 - 20:00</option>
+                        <option value="2">20:00 - 22:00</option>
+                    </select>
+                </div>
+            </div>
+
+            <br>
+            <div>
+                <button type='submit' class="btn btn-success">Réserver</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+

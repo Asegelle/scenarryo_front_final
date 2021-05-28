@@ -22,17 +22,17 @@
       <form (ngSubmit)="onSubmitAddSchedule()" #scheduleForm="ngForm">
         
         <div class="form-group">
-          <label for="showDate">Heure de début :</label>
+          <label for="showDate">Date :</label>
           <input type="date" [(ngModel)]="schedule.showDate"
             class="form-control" 
             id="showDate" 
             name="showDate" 
-            placeholder="Heure de début">
+            placeholder="Date">
         </div>
 
         <div class="form-group">
           <label for="startingHour">Heure de début :</label>
-          <input type="time" [(ngModel)]="schedule.startingHour"
+          <input type="time" value={{text}} [(ngModel)]="schedule.startingHour"
             class="form-control" 
             id="startingHour" 
             name="startingHour" 
@@ -86,7 +86,13 @@
               >
                   <i class="fa fa-trash"></i>
               </button>
-          </td>
+              <button 
+              class="btn btn-warning"
+              (click)="handleClickUpdateSchedule(schedule.id)"
+              >
+                  <i class="fa fa-pencil"></i>
+              </button>
+            </td>
 
           </tr>
         </tbody>
