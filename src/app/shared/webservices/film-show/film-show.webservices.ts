@@ -11,13 +11,19 @@ import { FilmShow } from '../../models/film-show';
 export class FilmShowWebService {
   
   private filmShowUrl = 'http://localhost:8080/admin/film-show';
-
-
+  
+  
   constructor( private http: HttpClient) { }
-
+  
   getFilmShowes(): Observable<FilmShow[]> {
     return this.http.get<FilmShow[]>(`${this.filmShowUrl}/getAll`);
   }
-
   
+  bookASeat(showOfThisMovie: FilmShow) :Observable<FilmShow>{
+    return this.http.put<FilmShow>(`${this.filmShowUrl}/book-seat`,showOfThisMovie);
+  }
+  
+  // updateFilmShow(show: FilmShow) {
+  //   return this.http.put<FilmShow>(`${this.filmShowUrl}/book-seat`,show);
+  // }
 }

@@ -1,4 +1,4 @@
-<h1>A l'Affiche</h1>
+<h1>A l'Affiche N'oublie pas la javaDoc </h1>
 
 
 <div class="card my-5">
@@ -16,7 +16,50 @@
         </thead>
         <tbody>
           <tr *ngFor="let movie of moviesList; let i = index">
-            <td>{{ movie.title }}</td>
+            <!-- debut yousra  modif-->
+            <td>
+              <p>{{ movie.title }}</p>
+              <button (click)="handleClickDisplaySchedule()" class="btn btn-secondary">
+                <i>Horaires</i>
+              </button>
+
+              <div [hidden]="isHidden">
+
+                <div class="card my-5 card-body">
+                  <table class="table table-bordered table-striped" >
+                    <thead class="bg-warning">
+						<tr>
+							<th *ngFor="let dateDisplayed of arrayDates"> {{ dateDisplayed | date:'MM-dd' }}</th>
+						</tr>
+                    </thead>
+                    <tbody>
+						
+						<tr *ngFor="let showOfThisMovie of movie.filmShow">
+							<td *ngFor="let dateDisplayed of arrayDates">
+								<span 
+									*ngIf = "(showOfThisMovie.showSchedule.showDate | date:'MM-dd') == (dateDisplayed| date:'MM-dd' ); else elseBlock">
+									<button class="btn btn-danger"
+											(click) = "handleClickBooking(showOfThisMovie)"
+										><i>{{showOfThisMovie.showSchedule.startingHour}}</i>
+									</button> 
+									{{showOfThisMovie.bookedSeats}}
+								</span>
+							</td>
+						</tr>
+						<ng-template #elseBlock> <td ></td> </ng-template>
+
+					
+                      
+                    </tbody>
+                  </table>
+                </div>
+
+
+
+              </div>
+
+            </td>
+            <!-- fin yousra modif-->
             <td><p><img src="{{ movie.poster }}" width="100"></p>
               <button class="btn btn-warning">
                 <i>Détails</i>
