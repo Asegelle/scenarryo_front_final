@@ -10,16 +10,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovieWebService } from './shared/webservices/movie/movie.webservice';
 import { MovieService } from './shared/services/movie/movie.service';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { GestionMoviesComponent } from './page-admin/gestion-movies/gestion-movies.component';
 import { GestionRoomsComponent } from './page-admin/gestion-rooms/gestion-rooms.component';
-import { RoomWebService } from './shared/webservices/room/room.webservice';
 import { PageOnDisplayComponent } from './page-on-display/page-on-display.component';
-import { PageBookingComponent } from './page-booking/page-booking.component';
+
+import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
 import { PageMovieDetailsComponent } from './page-movie-details/page-movie-details.component';
+import { PageBookingComponent } from './page-booking/page-booking.component';
 import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageAdminComponent } from './page-admin/page-admin.component';
+import { GestionMoviesComponent } from './page-admin/gestion-movies/gestion-movies.component';
 import { GestionSchedulesComponent } from './page-admin/gestion-schedules/gestion-schedules.component';
-import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
+import { RoomWebService } from './shared/webservices/room/room.webservice';
+import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
 
 
 
@@ -37,7 +45,13 @@ import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/ges
     GestionMoviesComponent,
     GestionRoomsComponent,
     GestionSchedulesComponent,
-    GestionFilmShowesComponent
+    GestionFilmShowesComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardUserComponent,
+    BoardModeratorComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +64,8 @@ import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/ges
   providers: [
     MovieService,
     MovieWebService,
-    RoomWebService
+    RoomWebService,
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
