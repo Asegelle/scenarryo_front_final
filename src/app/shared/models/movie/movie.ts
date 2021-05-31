@@ -6,14 +6,14 @@ export class Movie {
     id?:number;
     title?:string;
     producer?:string;
-    releaseDate?:Date;
+    releaseDate?:string;
     ageLimited?:string;
     synopsis?:string;
     duration?:string;
     poster?:string;
     filmShow?:FilmShow[];
 
-    constructor(id?: number, title?:string, producer?:string,releaseDate?:Date,ageLimited?:string, synopsis?:string, duration?:string, poster?:string,filmShow?:FilmShow[]){
+    constructor(id?: number, title?:string, producer?:string,releaseDate?:string,ageLimited?:string, synopsis?:string, duration?:string, poster?:string,filmShow?:FilmShow[]){
         this.id=id;
         this.title=title;
         this.producer=producer;

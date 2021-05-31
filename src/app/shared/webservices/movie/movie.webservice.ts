@@ -5,26 +5,41 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class MovieWebService {
-  
-  private urlMovies: string;
+
+  urlSpringMovies: string;
   movie = Movie;
-  
+  sUrlAPIMovies: string;
+  typeMovie: string = '&Type=movie';
+  title: string;
+  tUrlAPIMovies: string;
+  newTitle: string;
 
-  constructor( private http: HttpClient) {
-    this.urlMovies= 'http://localhost:8080/rest';
-   }
+  constructor(private http: HttpClient) {
+    this.urlSpringMovies = 'http://localhost:8080/admin/';
 
-  getMovies(): Observable<Movie[]> {
-    
-    console.log(this.http.get<Movie[]>(this.urlMovies ));
-
-    return this.http.get<Movie[]>(this.urlMovies);
+    // a mettre en api web service
+    this.sUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
+    this.tUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&t=';
   }
 
+
+
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.urlSpringMovies + 'movie');
+  }
+
+
+  getMovieFromApiList(title : any): Observable<any> {
+
+    return this.http.get<any>(this.sUrlAPIMovies + title + this.typeMovie);
+  }
+
+<<<<<<< HEAD
 
   getMovieById(id: number): Observable<Movie> {
     
@@ -32,4 +47,28 @@ export class MovieWebService {
   }
 
   
+=======
+  getMovieFromApiJson(newTitle : any): Observable<any> {
+   console.log('web components title envoyé en api'+ newTitle.Title);
+    return this.http.get<any>(this.tUrlAPIMovies + newTitle.Title);
+  }
+
+
+
+  deleteMovieService(deleteMovie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.urlSpringMovies + 'deletemovie', deleteMovie);
+  }
+
+  addMovieService(newMovie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.urlSpringMovies + 'addmovie', newMovie);
+
+  }
+
+
+ 
+
+
+
+
+>>>>>>> feature/Movie_CRUD
 }

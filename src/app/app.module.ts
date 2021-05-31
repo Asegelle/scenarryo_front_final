@@ -1,3 +1,4 @@
+import { ApiMovieWebService } from './shared/webservices/api-movie/apiMovie.webservice';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -43,14 +44,14 @@ import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/ges
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
     FormsModule
     
   ],
   providers: [
     MovieService,
     MovieWebService,
-    RoomWebService
+    RoomWebService,
+    ApiMovieWebService
   ],
   bootstrap: [AppComponent]
 })
