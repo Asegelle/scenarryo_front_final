@@ -19,9 +19,11 @@ export class MovieWebService {
   tUrlAPIMovies: string;
   newTitle: string;
 
+  private urlMovies:string;
+
+
   constructor(private http: HttpClient) {
     this.urlSpringMovies = 'http://localhost:8080/admin/';
-
     // a mettre en api web service
     this.sUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
     this.tUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&t=';
@@ -39,7 +41,6 @@ export class MovieWebService {
     return this.http.get<any>(this.sUrlAPIMovies + title + this.typeMovie);
   }
 
-<<<<<<< HEAD
 
   getMovieById(id: number): Observable<Movie> {
     
@@ -47,7 +48,6 @@ export class MovieWebService {
   }
 
   
-=======
   getMovieFromApiJson(newTitle : any): Observable<any> {
    console.log('web components title envoyé en api'+ newTitle.Title);
     return this.http.get<any>(this.tUrlAPIMovies + newTitle.Title);
@@ -70,5 +70,4 @@ export class MovieWebService {
 
 
 
->>>>>>> feature/Movie_CRUD
 }
