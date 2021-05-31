@@ -8,26 +8,22 @@ import { Observable } from 'rxjs';
 })
 export class ApiMovieWebService {
 
-  // private urlAPIMovies: string;
-  private urlSpringMovies: string;
+  private urlAPIMovies: string;
+  
   movie = Movie;
   
 
   constructor(private http: HttpClient) {
-    // this.urlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
-    this.urlSpringMovies= 'http://localhost:8080/admin/movie';
+    this.urlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
+   
    }
 
-   addMovies(newMovie : Movie): Observable<Movie>  {
+
+  
 
 
-    console.log('newMovie' , newMovie)
-    
-    // return this.http.post<Movie>(this.urlSpringMovies, newMovie).pipe(map(function(movieAdd : Movie):Movie{
 
-    return  this.http.post<Movie>(this.urlSpringMovies, newMovie);
-    // }));
-  }
+  // fonction appelle à l'API si jamais on utilise le webservice et pas le components
 
   //  getMoviesByTitle(title : string): Observable<Movie[]> {
 

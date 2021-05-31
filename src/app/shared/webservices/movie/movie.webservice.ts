@@ -10,33 +10,55 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MovieWebService {
-  
-  private urlSpringMovies: string;
-  movie = Movie;
- 
 
-  constructor( private http: HttpClient) {
-    this.urlSpringMovies= 'http://localhost:8080/admin/movie';
-    
-   }
+  urlSpringMovies: string;
+  movie = Movie;
+  sUrlAPIMovies: string;
+  typeMovie: string = '&Type=movie';
+  title: string;
+  tUrlAPIMovies: string;
+  newTitle: string;
+
+  constructor(private http: HttpClient) {
+    this.urlSpringMovies = 'http://localhost:8080/admin/';
+
+    // a mettre en api web service
+    this.sUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
+    this.tUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&t=';
+  }
 
 
 
   getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.urlSpringMovies + 'movie');
+  }
 
-    return this.http.get<Movie[]>(this.urlSpringMovies);
+
+  getMovieFromApiList(title : any): Observable<any> {
+
+    return this.http.get<any>(this.sUrlAPIMovies + title + this.typeMovie);
+  }
+
+  getMovieFromApiJson(newTitle : any): Observable<any> {
+   console.log('web components title envoyé en api'+ newTitle.Title);
+    return this.http.get<any>(this.tUrlAPIMovies + newTitle.Title);
   }
 
 
 
+  deleteMovieService(deleteMovie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.urlSpringMovies + 'deletemovie', deleteMovie);
+  }
 
-  addMovies(newMovie : Movie): Observable<Movie>  {
-    
-    console.log('sdfdsgd' + newMovie);
-    return this.http.post<Movie>(this.urlSpringMovies, newMovie);
+  addMovieService(newMovie: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.urlSpringMovies + 'addmovie', newMovie);
+
   }
 
 
  
-  
+
+
+
+
 }

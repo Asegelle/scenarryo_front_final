@@ -1,63 +1,21 @@
+<div class="container">
+  <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
 
-  <div class="container">
-    <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a [routerLink]="['/page-admin']" class="nav-link active" aria-current="page">Overview</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-movies']" class="nav-link">Films</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-rooms']" class="nav-link">Salles</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-schedules']" class="nav-link">Horaires</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-film-showes']" class="nav-link">Séances</a></li>
-      </ul>
-    </div>
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a [routerLink]="['/page-admin']" class="nav-link active" aria-current="page">Overview</a>
+      </li>
+      <li class="nav-item"><a [routerLink]="['/gestion-movies']" class="nav-link">Films</a></li>
+      <li class="nav-item"><a [routerLink]="['/gestion-rooms']" class="nav-link">Salles</a></li>
+      <li class="nav-item"><a [routerLink]="['/gestion-schedules']" class="nav-link">Horaires</a></li>
+      <li class="nav-item"><a [routerLink]="['/gestion-film-showes']" class="nav-link">Séances</a></li>
+    </ul>
   </div>
+</div>
 
 
-  <h1>Section Admin </h1>
-  <h3>Gestion des films</h3>
+<h1>Section Admin </h1>
+<h3>Gestion des films</h3>
 
-
-  <div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Producteur</th>
-            <th scope="col">Date de sortie</th>
-            <th scope="col">Durée</th>
-            <th scope="col">Limite d'âge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let movie of moviesList; let i = index">
-            <td>{{ movie.title }}</td>
-            <td>{{ movie.producer }}</td>
-            <td>{{ movie.releaseDate }}</td>
-            <td>{{ movie.duration }}</td>
-            <td>{{ movie.ageLimited }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-
-  <p>Ici on va essayer de rentrer un titre en base de données</p>
-
-<form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)">
-
-    <div class="form-group">
-
-        <label for="title"> Renseignez un titre </label>
-
-        <input  type="text" id="title" class="form-control" name="title" [(ngModel)]="title">
-      
-
-    </div>
-    <button type="submit" class="btn btn-primary">Rechercher</button>
-
-</form>
 
 <div class="card my-5">
   <div class="card-body">
@@ -72,28 +30,86 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let movieApi of moviesListApi; let i = index">
-          <td>{{ movieApi.Title }}</td>
-          <td><img src="{{ movieApi.Poster }}" width="100"></td>
-          <td>{{ movieApi.Runtime }}</td>
-          <td>{{ movieApi.Released }}</td>
-          <td>{{ movieApi.Plot }}</td>
-          <td>{{ movieApi.Rating }}</td>
-          <td>{{ movieApi.Type }}</td>
-          <td>{{ movieApi.Title }}</td>
-
-        
+        <tr *ngFor="let movie of moviesList; let i = index">
+          <td>{{ movie.title }}</td>
+          <td>{{ movie.producer }}</td>
+          <td>{{ movie.releaseDate }}</td>
+          <td>{{ movie.duration }}</td>
+          <td>{{ movie.ageLimited }}</td>
           <td>
-            <button (click)="handleClickAddMovie(movieApi)" class="btn btn-primary">
-                <i class="fa fa-plus"></i>
+            <button  (click)="handleClickDeleteMovie(movie)" class="btn btn-outline-danger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
             </button>
-        </td>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<div>
-  {{ this.moviesListApi }}
+
+<p>Ici on va essayer de rentrer un titre en base de données</p>
+
+<form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)">
+
+  <div class="form-group">
+
+    <label for="title"> Renseignez un titre </label>
+
+    <input type="text" id="title" class="form-control" name="title" [(ngModel)]="title">
+
+
+  </div>
+  <button type="submit" class="btn btn-primary">Rechercher</button>
+
+</form>
+
+<div class="card my-5">
+  <div class="card-body">
+    <form>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">Poster</th>
+          <th scope="col">Date de sortie</th>
+          <th scope="col">Durée</th>
+          <th scope="col">Synospis</th>
+          <th scope="col">Réalisateur</th>
+          <th scope="col">Note</th>
+          <th scope="col">Limite d'âge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movieApi of moviesListApi; let i = index">
+          <td>{{ movieApi.Title }}</td>
+          <td><img src="{{ movieApi.Poster }}" width="100"></td>
+          <td>{{ movieApi.Released }}</td>
+          <td>{{ movieApi.Runtime }}</td>
+          <td>{{ movieApi.Plot }}</td>
+          <td>{{ movieApi.Director }}</td>
+          <td>{{ movieApi.imdbRating }}</td>
+          
+          <td>
+            <select ([ngModel])="ageLimit" >
+              <!-- rajouter un champs vide sinon -->
+              <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index" [ngValue]="ageLimited"  > {{ageLimited}} </option>
+              
+            </select>
+          </td>
+          
+
+          <td>
+            <button  (click)="handleClickAddMovie(movieApi)" class="btn btn-primary">
+              <i class="fa fa-plus"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+  </div>
 </div>
