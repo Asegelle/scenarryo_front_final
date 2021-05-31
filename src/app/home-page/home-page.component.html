@@ -1,6 +1,20 @@
 <h1>Bienvenue sur le site ScenARRY'o </h1>
 
 
+
+<div class="container">
+  <header class="jumbotron">
+    <p>{{ content }}</p>
+  </header>
+</div>
+
+
+
+
+
+
+
+<!--
 <div class="card my-5">
     <div class="card-body">
       <table class="table table-bordered table-striped">
@@ -30,4 +44,18 @@
 
 
 
+<p>ICi on va essayer de rentrer un tite en base de données</p>
 
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+    <div class="form-group">
+
+        <label for="title"> Renseignez un titre </label>
+
+        <input type="text" id="title" class="form-control" name="title" ngModel>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+</form>
+-->

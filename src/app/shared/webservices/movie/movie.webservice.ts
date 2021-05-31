@@ -15,11 +15,11 @@ export class MovieWebService {
   movie = Movie;
   sUrlAPIMovies: string;
   typeMovie: string = '&Type=movie';
-  title: string;
+  title?: string;
   tUrlAPIMovies: string;
-  newTitle: string;
+  newTitle?: string;
 
-  private urlMovies:string;
+  private urlMovies?:string;
 
 
   constructor(private http: HttpClient) {
