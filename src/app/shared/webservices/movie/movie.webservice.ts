@@ -19,7 +19,7 @@ export class MovieWebService {
   tUrlAPIMovies: string;
   newTitle?: string;
 
-  private urlMovies?:string;
+  private urlMovies:string = 'http://localhost:8080/admin/rest' ;
 
 
   constructor(private http: HttpClient) {

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+import { FilmShow } from '../shared/models/film-show';
 import { Movie } from '../shared/models/movie/movie';
 import { Room } from '../shared/models/room';
 import { Schedule } from '../shared/models/schedule';
@@ -44,24 +46,29 @@ export class PageBookingComponent implements OnInit {
     duration:"",
     poster:""
   };
+  show: FilmShow ={
+    id:undefined,
+    priceTicket:undefined,
+    bookedSeats:undefined,
+    showRoom:this.room,
+    showSchedule:this.schedule,
+    showMovie:this.movie
+  }
 
 
 
 
 
 
-  constructor(private scheduleWebService: ScheduleWebService, private movieWebService: MovieWebService, private roomWebService: RoomWebService) { }
+  constructor(private scheduleWebService: ScheduleWebService, 
+              private movieWebService: MovieWebService, 
+              private roomWebService: RoomWebService,
+              private router : Router) { }
 
   getSchedules(){
     this.scheduleWebService.getSchedules()
     .subscribe(data => {
-      this.schedulesList = data;
-    });
-  }
-  getMovies(){
-    this.movieWebService.getMovies()
-    .subscribe(data => {
-      this.moviesList = data;
+     // this.schedulesList = data;
     });
   }
   getRooms(){
@@ -70,17 +77,56 @@ export class PageBookingComponent implements OnInit {
       this.roomsList = data;
     });
   }
-
+  
+  getMovies(){
+    this.movieWebService.getMovies()
+    .subscribe(data => {
+      this.moviesList = data;
+    });
+  }
 
   ngOnInit(): void {
 
-    this.getSchedules();
     this.getMovies();
-    this.getRooms();
+    // this.getSchedules();
+    // this.getRooms();
 
   }
+// ici je declare la variable qui va contenir au fur est a mesure mon movie 
+selectedMovie : Movie;
+selectedShow : FilmShow;
+filmShowes : FilmShow[];
+onChangeSelectedMovie(movie : Movie){
+  this.selectedMovie = movie;
+  this.schedulesList =[];
+  console.log(movie);
+  this.filmShowes = movie.filmShow ;
+  movie.filmShow.forEach(show => {
+        this.schedulesList.push(show.showSchedule);
+    });
+}
+onChangeSelectedSchedule(show){
+  console.log(show);
+  this.selectedShow = show;
+}
 
+handleClickBooking(){
+  let queryNavigation : NavigationExtras = {
+    queryParams : {
+      idShow : this.selectedShow.id,
+      idMovie : this.selectedMovie.id
+    }
+  }
+  if (this.selectedShow.bookedSeats && this.selectedShow.showRoom?.seatsQuantity 
+      && this.selectedShow.bookedSeats < this.selectedShow.showRoom?.seatsQuantity) {
+    // this.filmShowService.updateFilmShow(show);
+    this.router.navigate(['page-payment'],queryNavigation);
+    
+  } else {
+    alert('aucune place n\'est disponible');
+  }
 
+}
 
 
   onSubmitBooking(){

@@ -30,6 +30,8 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
+import { PagePaymentComponent } from './page-payment/page-payment.component';
+import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 
 
 
@@ -53,7 +55,9 @@ import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
     ProfileComponent,
     BoardAdminComponent,
     BoardUserComponent,
-    BoardModeratorComponent
+    BoardModeratorComponent,
+    PagePaymentComponent,
+    TermsOfUseComponent
   ],
   imports: [
     BrowserModule,

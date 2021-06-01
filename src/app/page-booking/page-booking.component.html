@@ -16,6 +16,8 @@
                           id="movie"
                           name="movie"
                           [(ngModel)]="movie"
+                          #SelectedMovie
+                          (change) = "onChangeSelectedMovie(movie)"
                           placeholder="titre du film"
                           >
                             <option></option>
@@ -29,38 +31,30 @@
         
                     <br>
                     <div class="form-group">
-                        <label for="schedule.showDate">Sélection du jour * : </label>
-                        <div>
-                            <input type="date" [(ngModel)]="schedule.showDate" 
-                            class="form-control"
-                            id="schedule.showDate"
-                            required
-                            name="schedule.showDate"
-                            placeholder="date"                    
-                            />
-                        </div>
-                    </div>
-        
-                    <br>
-                    <div class="form-group">
-                        <label for="schedule.startingHour">Sélection de l'horaire * :</label>
-                        <select type="select" [(ngModel)]="schedule.startingHour"
+                        <label for="schedule.showDate">Sélection de l'horaire * : </label>
+                        
+                        <select type="select" 
                           class="form-select"
-                          id="schedule.startingHour"
-                          required
-                          name="schedule.startingHour"
-                          placeholder="horaire"
-                        >
+                          id="show"
+                          name="show"
+                          [(ngModel)]="show"
+                          #SelectedMovie
+                          (change) = "onChangeSelectedSchedule(show)"
+                          placeholder="Horaires "
+                          >
                             <option></option>
-                            <option *ngFor="let schedule of schedulesList; let i = index">
-                                {{ schedule.startingHour }} - 
-                                {{ schedule.endingHour }}</option>
+                            <option [ngValue]="show" *ngFor="let show of filmShowes; let i = index">
+                                
+                                {{ show.showSchedule.showDate | date:'EE dd MMMM YY':'fr-FR' }} -- {{ show.showSchedule.startingHour }}
+                            </option>
                         </select>
                     </div>
         
+                    
+        
                     <br>
                     <div>
-                        <button type='submit' class="btn btn-success">Réserver</button>
+                        <button type='submit' class="btn btn-success" (click) = "handleClickBooking()">Réserver</button>
                     </div>
                     <div *ngIf="bookingForm.invalid"> 
                         * Champs requis. 

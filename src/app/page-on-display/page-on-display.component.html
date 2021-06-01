@@ -39,7 +39,7 @@
 								<span 
 									*ngIf = "(showOfThisMovie.showSchedule.showDate | date:'MM-dd') == (dateDisplayed| date:'MM-dd' ); else elseBlock">
 									<button class="btn btn-danger"
-											(click) = "handleClickBooking(showOfThisMovie)"
+											(click) = "handleClickBooking(showOfThisMovie,movie)"
 										><i>{{showOfThisMovie.showSchedule.startingHour}}</i>
 									</button> 
 									{{showOfThisMovie.bookedSeats}}

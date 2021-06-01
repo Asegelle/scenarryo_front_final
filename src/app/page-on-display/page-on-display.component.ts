@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
 import { FilmShow } from '../shared/models/film-show';
 import { Movie } from '../shared/models/movie/movie';
 import { Schedule } from '../shared/models/schedule';
@@ -29,7 +30,8 @@ export class PageOnDisplayComponent implements OnInit {
   
   constructor( private movieWebService: MovieWebService,
                private filmShowService : FilmShowWebService,
-               private scheduleService : ScheduleWebService
+               private scheduleService : ScheduleWebService,
+               private router : Router
             ) { }
 
   ngOnInit(): void {
@@ -41,21 +43,20 @@ export class PageOnDisplayComponent implements OnInit {
     }
     this.reloadData();
   }
-  handleClickBooking(show : FilmShow){
-
-    if (show.bookedSeats && show.showRoom?.seatsQuantity && show.bookedSeats <= show.showRoom?.seatsQuantity) {
+  handleClickBooking(show : FilmShow, movie : Movie){
+    let queryNavigation : NavigationExtras = {
+      queryParams : {
+        idShow : show.id,
+        idMovie : movie.id
+      }
+    }
+    if (show.bookedSeats && show.showRoom?.seatsQuantity 
+        && show.bookedSeats < show.showRoom?.seatsQuantity) {
       // this.filmShowService.updateFilmShow(show);
-      this.filmShowService.bookASeat(show)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        }
-      );
+      this.router.navigate(['page-payment'],queryNavigation);
       
-      // alert(JSON.stringify(show));
     } else {
-      alert('aucune place est disponible');
+      alert('aucune place n\'est disponible');
     }
       
   }

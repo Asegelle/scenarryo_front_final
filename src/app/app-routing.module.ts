@@ -15,11 +15,15 @@ import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageMovieDetailsComponent } from './page-movie-details/page-movie-details.component';
 
 import { PageOnDisplayComponent } from './page-on-display/page-on-display.component';
+import { PagePaymentComponent } from './page-payment/page-payment.component';
+import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:'', component: HomePageComponent},
+  {path:'terms-of-use', component: TermsOfUseComponent},
+  {path:'page-payment', component: PagePaymentComponent},
   {path:'home-page', component: HomePageComponent},
   {path:'page-on-display', component: PageOnDisplayComponent},
   {path:'page-booking', component: PageBookingComponent},
