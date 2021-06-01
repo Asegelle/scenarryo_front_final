@@ -1,0 +1,15 @@
+.card-columns {
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    display: flex;
+}
+
+.card {
+    width: 18rem;
+}
+
+.card-img {
+    height:300px;
+    width: auto;
+    
+}

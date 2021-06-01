@@ -21,16 +21,17 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    /*
+    
     this.movieWebService.getMovies()
       .subscribe(data => {
         this.moviesList = data;
-    });*/
+    });
 
 
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
+        
       },
       err => {
         this.content = JSON.parse(err.error).message;
@@ -39,10 +40,7 @@ export class HomePageComponent implements OnInit {
   }
   
   
-  /*
-  onSubmit(form: NgForm) {
-    console.log(form.value['title']);
-  }*/
+  
 
   onDestroy() {
   }

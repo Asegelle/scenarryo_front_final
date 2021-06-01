@@ -1,10 +1,10 @@
 <h1>Bienvenue sur le site ScenARRY'o </h1>
 
-
+<h2>Banière du Boolean</h2>
 
 <div class="container">
   <header class="jumbotron">
-    <p>{{ content }}</p>
+    <p>{{ content }} wesh c'est quoi cette partie ?</p>
   </header>
 </div>
 
@@ -12,50 +12,17 @@
 
 
 
+<div class="card-columns">
+  <div  *ngFor="let movie of moviesList; let i = index">
 
+    <div class="card text-center" >
+      <div class="card-body">
+        <img class="card-img" src="{{ movie.poster }}"  alt="Affiche du film ">
+        <h5 class="card-title">{{ movie.title }}</h5>
+        <h5 class="card-text bg-warning">{{ movie.ageLimited }}</h5>
 
-<!--
-<div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Affiche</th>
-            <th scope="col">Producteur</th>
-            <th scope="col">Date de sortie</th>
-            <th scope="col">Durée</th>
-            <th scope="col">Limite d'âge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let movie of moviesList; let i = index">
-            <td>{{ movie.title }}</td>
-            <td><img src="{{ movie.poster }}" width="100"></td>
-            <td>{{ movie.producer }}</td>
-            <td>{{ movie.releaseDate }}</td>
-            <td>{{ movie.duration }}</td>
-            <td>{{ movie.ageLimited }}</td>
-          </tr>
-        </tbody>
-      </table>
+        <a href="#" class="btn btn-primary">Plus d'informations</a>
+      </div>
     </div>
   </div>
-
-
-
-<p>ICi on va essayer de rentrer un tite en base de données</p>
-
-<form #form="ngForm" (ngSubmit)="onSubmit(form)">
-
-    <div class="form-group">
-
-        <label for="title"> Renseignez un titre </label>
-
-        <input type="text" id="title" class="form-control" name="title" ngModel>
-
-    </div>
-    <button type="submit" class="btn btn-primary">Enregistrer</button>
-
-</form>
--->
+</div>
