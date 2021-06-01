@@ -31,8 +31,6 @@ import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

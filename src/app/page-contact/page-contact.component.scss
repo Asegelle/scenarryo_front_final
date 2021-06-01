@@ -1,0 +1,26 @@
+h2{
+  margin-top:2%;
+  text-align: center;
+}
+
+.AdresseForm{
+  text-align: center;
+}
+
+.map-container {
+    height: 500px;
+    width: auto;
+    margin-top: 2%;
+    margin-right: 50%;
+    margin-bottom: 30%;
+    margin-left: 1%;
+  }
+  
+  .map-frame {
+    border: 2px solid black;
+    height: 100%;
+  }
+  
+  #map {
+    height: 100%;
+  }
