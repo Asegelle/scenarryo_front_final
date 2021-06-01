@@ -1,0 +1,19 @@
+<h1>QUIZZ</h1>
+
+<h2>Question {{ numberOfQuestion }} </h2>
+
+<!-- <p *ngFor="let question of questionList; let index = index"> {{ question[index] }} </p> -->
+<p> {{ questionList[0] }} </p>
+
+<form method="POST" >
+<div>
+    <button (click)="handleClickResponseQuizz(0)" > {{ responseList[0] }} </button>
+    <button (click)="handleClickResponseQuizz(1)"> {{ responseList[1] }} </button>
+</div>
+
+<div>
+    <button (click)="handleClickResponseQuizz(2)"> {{ responseList[2] }} </button>
+    <button (click)="handleClickResponseQuizz(3)"> {{ responseList[3] }} </button>
+</div>
+    <input type="submit" value="Valider" (click)="handleClickQuestionForm()" />
+</form>

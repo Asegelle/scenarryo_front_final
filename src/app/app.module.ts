@@ -21,8 +21,6 @@ import { PageAdminComponent } from './page-admin/page-admin.component';
 import { GestionSchedulesComponent } from './page-admin/gestion-schedules/gestion-schedules.component';
 import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +42,7 @@ import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/ges
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
     
   ],
   providers: [
