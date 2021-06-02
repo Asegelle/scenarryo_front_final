@@ -45,7 +45,7 @@
                             <option></option>
                             <option [ngValue]="show" *ngFor="let show of filmShowes; let i = index">
                                 
-                                {{ show.showSchedule.showDate | date:'EE dd MMMM YY':'fr-FR' }} -- {{ show.showSchedule.startingHour }}
+                                {{ show.showSchedule.showDate | date:'EE dd MMMM YY, HH:MM' :'' : 'fr-FR' }} -- {{ show.showSchedule.startingHour }}
                             </option>
                         </select>
                     </div>

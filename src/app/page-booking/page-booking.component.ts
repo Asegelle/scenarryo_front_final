@@ -117,7 +117,8 @@ handleClickBooking(){
       idMovie : this.selectedMovie.id
     }
   }
-  if (this.selectedShow.bookedSeats && this.selectedShow.showRoom?.seatsQuantity 
+  if (this.selectedShow.bookedSeats !=undefined 
+      && this.selectedShow.showRoom?.seatsQuantity !=undefined
       && this.selectedShow.bookedSeats < this.selectedShow.showRoom?.seatsQuantity) {
     // this.filmShowService.updateFilmShow(show);
     this.router.navigate(['page-payment'],queryNavigation);

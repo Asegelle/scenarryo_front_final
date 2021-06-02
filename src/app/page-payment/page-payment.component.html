@@ -32,14 +32,44 @@
                     j'ai lu et j'accepte les conditions générales d'utilisation.
                 </label>
                 <label >
-                    <a [routerLink]="['/terms-of-use']" > Conditions Générales d'Utilisation (CGU)</a>
+                    <a [routerLink]="['/terms-of-use/']" > Conditions Générales d'Utilisation (CGU)</a>
                 </label>
+                <button (click)="handleClickTermsOfUse()"
+                        class="btn btn-success"
+                ><i class="fa fa-info"></i></button>
             </div>
-            <div class="mt-4 offset-2">
-                <button type="button" class="btn btn-success" (click) = "handleClickPayment()">
-                    Paiement
-                </button>
-            </div>
+
+            <!--- debut tableau style de choix de place -->
+            <table class="table table-sm">
+                
+                <tbody>
+                    
+                    <tr *ngFor = "let item of  [].constructor(roomSelected?.rowsNumber) ; let i = index">
+                        <td *ngFor = "let item of  [].constructor(roomSelected?.columnsNumber) ; let j = index" >{{ handleClickCheckSeatAvailable(i+1,j+1) }}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <form (ngSubmit)="handleClickPayment(f)" #f="ngForm">
+                <div class="row">
+                    <div class="col-2">
+                        <input type = "number" name="placeBookedRow" class="form-control" placeholder="Numéro de row" ngModel>
+                    </div>
+                    <div class="col-2">
+                        <input type = "number" name="placeBookedColumn" class="form-control" placeholder="Numero de column" ngModel>
+                    </div>
+                    
+                    
+                </div> 
+                <div class="row">
+                    
+                </div>
+                <div class="mt-4 offset-2">
+                    <button type="submit" class="btn btn-success" >
+                        Paiement
+                    </button>
+                </div>
+            </form>
 		</div>
 		
         <div class="col-md-3 app-booking-poster me-3 p-2 bd-highlight">

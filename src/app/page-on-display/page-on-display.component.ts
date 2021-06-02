@@ -50,7 +50,7 @@ export class PageOnDisplayComponent implements OnInit {
         idMovie : movie.id
       }
     }
-    if (show.bookedSeats && show.showRoom?.seatsQuantity 
+    if (show.bookedSeats!=undefined && show.showRoom?.seatsQuantity !=undefined
         && show.bookedSeats < show.showRoom?.seatsQuantity) {
       // this.filmShowService.updateFilmShow(show);
       this.router.navigate(['page-payment'],queryNavigation);

@@ -33,7 +33,13 @@ import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
 import { PagePaymentComponent } from './page-payment/page-payment.component';
 import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 
+/* Traduction de la date en français  */
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+import  localeFrExtra  from '@angular/common/locales/extra/fr';
+import { BookedSeatsService } from './shared/webservices/booked-seats/booked-seats.service';
 
+registerLocaleData(localeFr,'fr-FR',localeFrExtra);
 
 @NgModule({
   declarations: [
@@ -68,6 +74,7 @@ import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.co
   ],
   providers: [
     MovieService,
+    BookedSeatsService,
     MovieWebService,
     RoomWebService,
     ApiMovieWebService,
