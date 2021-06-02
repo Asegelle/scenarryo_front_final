@@ -18,6 +18,7 @@ import { PageOnDisplayComponent } from './page-on-display/page-on-display.compon
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
   {path:'', component: HomePageComponent},
   {path:'home-page', component: HomePageComponent},

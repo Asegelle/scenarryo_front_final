@@ -61,7 +61,11 @@
             </td>
             <!-- fin yousra modif-->
             <td><p><img src="{{ movie.poster }}" width="100"></p>
-              <button class="btn btn-warning">
+              <button class="btn btn-warning" 
+              (click)="handleClickDetailsMovie(movie)"
+              
+
+              >
                 <i>Détails</i>
               </button>
             </td>
@@ -74,3 +78,4 @@
       </table>
     </div>
   </div>
+
