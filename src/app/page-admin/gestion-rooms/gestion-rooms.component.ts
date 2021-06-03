@@ -18,7 +18,7 @@ export class GestionRoomsComponent implements OnInit {
   }
 
   handleClickDeleteRoom(index : number):void{
-    // TODO  si une room est dans show-room ne supprime pas ca 
+    //  si une room est dans show-room ne supprime pas ca 
     console.log('deleted ');
     this.roomWebService.deleteRoom(index)
     .subscribe(data => {

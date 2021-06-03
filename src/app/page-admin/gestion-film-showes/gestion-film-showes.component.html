@@ -13,7 +13,115 @@
   </div>
 
 
-  <h1>Section Admin </h1>
+  <h2>Section Admin </h2>
+  <h3>Ajouter une nouvelle séance </h3>
+  
+
+	<div class="d-flex flex-row bd-highlight mb-0">
+
+		<div class="ms-3 p-2 w-100 bd-highlight pb-0">
+			<div class="card my-5 col-11 mb-0 ">
+				<div class="card-body">
+					<form (ngSubmit)="handleClickAddShow(formAdd)" #formAdd="ngForm">
+						<div class="form-group">
+							<label for="price">Prix du ticket *:</label>
+							<input type="number" name="priceTicket" class="form-control" placeholder="prix" ngModel>
+						</div>
+						<div class="form-group">
+							<label for="movie">Sélection du film * :</label>
+							<select type="select" 
+							class="form-select"
+							id="movie"
+							name="showMovie"
+							[(ngModel)]="movie"
+							#SelectedMovie
+							placeholder="titre du film"
+							>
+								<option></option>
+								<option [ngValue]="movie" *ngFor="let movie of movieList; let i = index">
+									
+									{{ movie.title }}
+								</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="room">Sélection de la salle * :</label>
+							<select type="select" 
+							class="form-select"
+							id="room"
+							name="showRoom"
+							[(ngModel)]="room"
+							placeholder="Salle "
+							>
+								<option></option>
+								<option [ngValue]="room" *ngFor="let room of roomList; let i = index">
+									
+									{{ room?.roomNumber }}
+								</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="schedule">Sélection de l'horaire * :</label>
+							<select type="select" 
+							class="form-select"
+							id="schedule"
+							name="showSchedule"
+							[(ngModel)]="schedule"
+							placeholder="Salle "
+							>
+								<option></option>
+								<option [ngValue]="schedule" *ngFor="let schedule of scheduleList; let i = index">
+									
+									{{ schedule?.showDate }} -- {{ schedule?.startingHour }}
+								</option>
+							</select>
+						</div>
+
+						<div class="form-group">
+							<label > <a href="#">Ou créer un nouveau :</a> </label>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-success">
+								<i class="fa fa-plus"></i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="app-booking-details me-3 p-2 bd-highlight">
+        
+            <div class="card my-5 col-12">
+                <div class=" card-body">
+
+
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div class="ms-3 p-2 w-100 bd-highlight">
+
+                            <h3 class="mb-2">Votre sélection</h3>
+
+                            <article class="mb-2"> Titre : {{ movie?.title}}</article>
+                            <article class="mb-2"> Producteur : {{ movie?.producer }}</article>
+                            <article class="mb-2"> Durée : {{ movie?.duration }}</article>
+                            <article class="mb-2"> Nom de la salle : {{ room?.roomNumber }}</article>
+                            <article class="mb-2"> Capacité de la salle : {{ room?.seatsQuantity }}</article>
+                            <article class="mb-2"> Date de projection : {{ schedule?. showDate }}</article>
+                            <article class="mb-2"> Heure de début : {{ schedule?.startingHour }}</article>
+
+                        </div>
+
+                        <div class="app-booking-poster me-3 p-2 bd-highlight">
+
+                            <img src="{{ movie?.poster }}" width="200">
+
+                        </div>
+                    </div>
+                
+                </div>
+             </div>
+    	</div>
+	</div>
+	
   <h3>Gestion des séances</h3>
 
 
@@ -26,7 +134,8 @@
             <th scope="col">prix du ticket</th>
             <th scope="col">Film</th>
             <th scope="col">Horaire</th>
-            <th scope="col">Salle</th>
+            <th scope="col">Nom salle</th>
+			<th scope="col">Actions </th>
           </tr>
         </thead>
         <tbody>
@@ -34,8 +143,14 @@
             <td>{{ filmSHow.bookedSeats }}</td>
             <td>{{ filmSHow.priceTicket }}</td>
             <td>{{ filmSHow.showMovie?.title }}</td>
-            <td>{{ filmSHow.showSchedule?.showDate }}</td>
+            <td>{{ filmSHow.showSchedule?.showDate }} : {{ filmSHow.showSchedule?.startingHour }}</td>
             <td>{{ filmSHow.showRoom?.roomNumber }}</td>
+			<td>
+              <button class="btn btn-danger"
+                      (click) = "handleClickDeleteFilmShow(filmSHow)"
+              ><i class="fa fa-trash"></i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

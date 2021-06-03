@@ -1,0 +1,82 @@
+
+
+	<div class="row mt-5">
+		<div class="col-md-6 offset-2">
+            <h2>Paiement : </h2>
+            <div >
+                <h3 class="text mt-3">
+                    {{ movieSelected?.title}}
+                </h3>
+                <h3 class="text-warning mt-3">
+                    {{ showSelected?.showSchedule?.showDate}} à {{ showSelected?.showSchedule?.startingHour}}
+                </h3> 
+                <h3 class="text mt-3">
+                    {{ movieSelected?.duration}} .
+                </h3> 
+            </div>
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="radio" name="paymentType" id="paymentCB" checked>
+                <label class="form-check-label" for="paymentCB">
+                    Carte Blue
+                </label>
+            </div>
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="radio" name="paymentType" id="paymentPaypal" >
+                <label class="form-check-label" for="paymentPaypal">
+                    Paypal
+                </label>
+            </div>
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    j'ai lu et j'accepte les conditions générales d'utilisation.
+                </label>
+                <label >
+                    <a [routerLink]="['/terms-of-use/']" > Conditions Générales d'Utilisation (CGU)</a>
+                </label>
+                <button (click)="handleClickTermsOfUse()"
+                        class="btn btn-success"
+                ><i class="fa fa-info"></i></button>
+            </div>
+
+            <!--- debut tableau style de choix de place -->
+            <table class="table table-sm">
+                
+                <tbody>
+                    
+                    <tr *ngFor = "let item of  [].constructor(roomSelected?.rowsNumber) ; let i = index">
+                        <td *ngFor = "let item of  [].constructor(roomSelected?.columnsNumber) ; let j = index" >{{ handleClickCheckSeatAvailable(i+1,j+1) }}</td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+            <form (ngSubmit)="handleClickPayment(f)" #f="ngForm">
+                <div class="row">
+                    <div class="col-2">
+                        <input type = "number" name="placeBookedRow" class="form-control" placeholder="Numéro de row" ngModel>
+                    </div>
+                    <div class="col-2">
+                        <input type = "number" name="placeBookedColumn" class="form-control" placeholder="Numero de column" ngModel>
+                    </div>
+                    
+                    
+                </div> 
+                <div class="row">
+                    
+                </div>
+                <div class="mt-4 offset-2">
+                    <button type="submit" class="btn btn-success" >
+                        Paiement
+                    </button>
+                </div>
+            </form>
+		</div>
+		
+        <div class="col-md-3 app-booking-poster me-3 p-2 bd-highlight">
+
+            <img src="{{ movieSelected?.poster }}" width="90%">
+
+        </div>
+	</div>
+    
+

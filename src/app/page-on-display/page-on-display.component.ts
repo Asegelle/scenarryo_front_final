@@ -44,21 +44,20 @@ export class PageOnDisplayComponent implements OnInit {
     }
     this.reloadData();
   }
-  handleClickBooking(show : FilmShow){
-
-    if (show.bookedSeats && show.showRoom?.seatsQuantity && show.bookedSeats <= show.showRoom?.seatsQuantity) {
+  handleClickBooking(show : FilmShow, movie : Movie){
+    let queryNavigation : NavigationExtras = {
+      queryParams : {
+        idShow : show.id,
+        idMovie : movie.id
+      }
+    }
+    if (show.bookedSeats!=undefined && show.showRoom?.seatsQuantity !=undefined
+        && show.bookedSeats < show.showRoom?.seatsQuantity) {
       // this.filmShowService.updateFilmShow(show);
-      this.filmShowService.bookASeat(show)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.reloadData();
-        }
-      );
+      this.router.navigate(['page-payment'],queryNavigation);
       
-      // alert(JSON.stringify(show));
     } else {
-      alert('aucune place est disponible');
+      alert('aucune place n\'est disponible');
     }
       
   }
