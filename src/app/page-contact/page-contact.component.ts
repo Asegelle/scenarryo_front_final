@@ -132,7 +132,6 @@ export class PageContactComponent implements OnInit, AfterViewInit {
       L.marker([this.userLattitude, this.userLongitude], {icon: myIcon}).bindPopup('USER').addTo(this.map).openPopup();
 
 
-
   
 
 //////////////////////////////////////////////////////
