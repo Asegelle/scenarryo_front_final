@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { NavigationExtras, Router } from '@angular/router';
 import { FilmShow } from '../shared/models/film-show';
 import { Movie } from '../shared/models/movie/movie';
 import { Schedule } from '../shared/models/schedule';
@@ -17,7 +18,8 @@ export class PageOnDisplayComponent implements OnInit {
   moviesList: Movie[] = [];
   showes: FilmShow[] = [];
   schedules: Schedule[] = [];
-
+  //movie:Movie = new Movie();
+  
   arrayDates: Date[] = [];
   // currentDate:Date = new Date();
   // tomorrowDate1 = new Date(new Date().setDate(new Date().getDate()+1));
@@ -29,7 +31,8 @@ export class PageOnDisplayComponent implements OnInit {
   
   constructor( private movieWebService: MovieWebService,
                private filmShowService : FilmShowWebService,
-               private scheduleService : ScheduleWebService
+               private scheduleService : ScheduleWebService,
+               private router: Router
             ) { }
 
   ngOnInit(): void {
@@ -94,4 +97,16 @@ export class PageOnDisplayComponent implements OnInit {
   }
 
 
+
+  handleClickDetailsMovie(movie:Movie){
+    let queryNavigation : NavigationExtras = {
+      queryParams : {
+        idMovie : movie.id
+      }
+    }
+    console.log("movie.id",movie.id);
+    this.router.navigate(['/page-movie-details'],queryNavigation);
+
+
+}
 }

@@ -3,6 +3,7 @@ import { Movie } from '../../models/movie/movie';
 
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MovieComments } from '../../models/movieComments';
 
 
 
@@ -12,14 +13,14 @@ import { HttpClient } from '@angular/common/http';
 export class MovieWebService {
 
   urlSpringMovies: string;
-  movie = Movie;
+  movies:Movie = new Movie;
   sUrlAPIMovies: string;
   typeMovie: string = '&Type=movie';
   title?: string;
   tUrlAPIMovies: string;
   newTitle?: string;
 
-  private urlMovies?:string;
+  private urlMovies:string = 'http://localhost:8080/admin/rest' ;
 
 
   constructor(private http: HttpClient) {
@@ -65,9 +66,18 @@ export class MovieWebService {
   }
 
 
+  getAllComments(): Observable<MovieComments[]> {
+    return this.http.get<MovieComments[]>(`${this.urlMovies}/comments`);
+  }
  
+  updateSchedules(id:number, movie:Movie): Observable<Movie>{
+    console.log(this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie));
+    return this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie); 
+  }
 
+  addComment(newComment: MovieComments): Observable<MovieComments> {
+    return this.http.post<MovieComments>(`${this.urlMovies}/comments`, newComment);
 
-
+  }
 
 }

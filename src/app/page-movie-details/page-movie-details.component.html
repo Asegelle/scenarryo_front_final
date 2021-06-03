@@ -1,3 +1,69 @@
-<h1>Details de film</h1>
+<div class="app-booking-details me-3 p-2 bd-highlight">
+        
+    <div class="card my-5 col-12">
+        <div class=" card-body">
 
+
+            <div class="d-flex flex-row bd-highlight mb-3">
+                <div class="ms-3 p-2 w-100 bd-highlight">
+
+                    <h2 class="mb-2 pb-4">{{ movie.title}}</h2>
+
+                    <div class="d-flex flex-row bd-highlight mb-3">
+                        <div>
+                            <div class="app-booking-poster me-3 bd-highlight">
+                                <img class="app-image" src="{{ movie.poster }}">
+                            </div>
+                        </div>
+                        <div class="ms-3 p-2 w-100 bd-highlight">
+                            <article class="mb-2"> Date de sortie : {{ movie.releaseDate}}</article>
+                            <article class="mb-2"> Producteur : {{ movie.producer }}</article>
+                            <article class="mb-2"> Limite d'âge : {{ movie.ageLimited}}</article>
+                            <article class="mb-2"> Durée : {{ movie.duration }}</article>
+                            <button (click)="handleClickDisplaySchedule()" class="btn btn-secondary">
+                                <i>Horaires</i>
+                              </button>
+                        </div>
+                    </div>
+
+                    <article class="text-justify app-synopsis pb-2 pt-2"> Synopsis :</article>
+                    <article class="app-synopsis-text">{{ movie.synopsis }}</article>
+
+                </div>
+
+
+            </div>
+        </div>
+     </div>
+
+</div>
+
+
+<form (ngSubmit)="onSubmitAddComment()" #commentForm="ngForm"
+class="form-group me-3 p-2 bd-highlight">
+    <label for="comment">Votre commentaire : </label>
+    <textarea [(ngModel)]="comment.comment"
+    [value]="comment.comment"
+    id="comment" 
+    name="comment"
+    placeholder="écrivez votre commentaire ici" class="form-control" id="comment" rows="7">
+    </textarea>
+    <button class="btn btn-warning">
+        Envoyer
+    </button>
+</form>
+
+  <div class="mb-2 mt-3">Commentaires précédents : </div>
+
+
+<div>
+    <div  class="me-3 p-2 bd-highlight"
+    *ngFor="let comment of movie.filmComment; let i = index">
+    
+        <div
+         class="card col-12 ">
+            {{ comment.comment }}
+        </div>
+    </div>
+</div>
 
