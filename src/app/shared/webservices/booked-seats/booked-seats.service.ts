@@ -16,7 +16,7 @@ export class BookedSeatsService {
     return this.http.put<FilmShow>(`${this.filmShowUrl}/book-seat`,bookedSeat);
   }
   
-  getBookedSeatsByShow(showSelected: FilmShow) :Observable<BookedSeats[]> {
-    return this.http.get<BookedSeats[]>(`${this.filmShowUrl}/book-seats-by-show/${showSelected.id}`);
+  getBookedSeatsByShow(id: number) :Observable<BookedSeats[]> {
+    return this.http.get<BookedSeats[]>(`${this.filmShowUrl}/book-seats-by-show/${id}`);
   }
 }

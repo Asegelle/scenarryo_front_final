@@ -27,6 +27,9 @@ export class PagePaymentComponent implements OnInit {
   showSelected: FilmShow;
   roomSelected : Room;
   bookedSeats : BookedSeats[];
+
+  rowSeat : number = 0;
+  colSeat: number =0 ;
   constructor( private movieWebService: MovieWebService,
                private filmShowService : FilmShowWebService,
                private scheduleService : ScheduleWebService,
@@ -41,34 +44,46 @@ export class PagePaymentComponent implements OnInit {
                   
                 }
               )
-            }
-
+      }
+  filmShow : FilmShow;
   ngOnInit(): void {
     this.reloadData();
-    // TODO ici undefined : source je ne recupere rien du Back pble en Back 
-    // console.log(this.bookedSeats);
-
     
   }
 
   handleClickPayment(form : NgForm){
 
     // partie creation du bookedSeats et insersion en BDD
-    let bookedSeat : BookedSeats = new BookedSeats(0,form.value['placeBookedRow'],form.value['placeBookedColumn'],this.showSelected);
+    let bookedSeat : BookedSeats = new BookedSeats(0,this.rowSeat,this.colSeat,this.showSelected);
     form.reset();
-    this.bookedSeatsService.bookASeat(bookedSeat)
-    .subscribe(
-      data => {
-        this.savePdf(bookedSeat);
-        this.reloadData();
+    if(this.showSelected.bookedSeats < this.showSelected.showRoom.seatsQuantity){
+      this.bookedSeatsService.bookASeat(bookedSeat)
+      .subscribe(
+        data => {
+          this.savePdf(bookedSeat);
+          this.reloadData();
+          window.location.reload;
+  
+        }
+      );
 
-      }
-    );
+    }else{
+      
+      alert('Malheuresement, aucune place n\'est disponible ')
+      this.router.navigate(['page-on-display']);
+    }
   }
 
-  
+  handleClickGetSeatRowAndColumn(row :number ,col : number ){
+    this.rowSeat = row;
+    this.colSeat = col ;
+  }
 
-
+  functionConvertPositionToAlphabet(row : number ) :string {
+    const tab = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    let alphabet = tab[row%26-1] ;
+    return alphabet+( Math.floor(row/26));
+  }
 
   // --------------------------------------------- table seats 
   handleClickCheckSeatAvailable(i : number,j : number) : boolean{
@@ -95,27 +110,26 @@ export class PagePaymentComponent implements OnInit {
   }
   this.router.navigate(['terms-of-use'],queryNavigation);
   }
+  // le canvas ne marche pas 
+  // @ViewChild('content', { static: true}) el!: ElementRef<HTMLImageElement>;
+  // pdf(){
+  //   html2canvas(this.el.nativeElement).then( (canvas) => {
+  //     const imgData = canvas.toDataURL('image/jpeg');
+  //     const pdf = new jsPDF({
+  //       orientation: 'portrait',
+  //     });
+  //     const imageProps = pdf.getImageProperties(imgData);
+  //     const pdfw = pdf.internal.pageSize.getWidth();
+  //     const pdfh = (imageProps.height*pdfw)/ imageProps.width;
 
-  @ViewChild('content', { static: true}) el!: ElementRef<HTMLImageElement>;
-  pdf(){
-    html2canvas(this.el.nativeElement).then( (canvas) => {
-      const imgData = canvas.toDataURL('image/jpeg');
-      const pdf = new jsPDF({
-        orientation: 'portrait',
-      });
-      const imageProps = pdf.getImageProperties(imgData);
-      const pdfw = pdf.internal.pageSize.getWidth();
-      const pdfh = (imageProps.height*pdfw)/ imageProps.width;
+  //     pdf.addImage(imgData,'PNG',0,0,pdfw,pdfh);
+  //     pdf.save('myPdf.pdf');
 
-      pdf.addImage(imgData,'PNG',0,0,pdfw,pdfh);
-      pdf.save('myPdf.pdf');
+  //   })
+  // }
 
-    })
-  }
-  title = 'Harry Poter ';
   @ViewChild('htmlData', {static : true}) htmlData!:ElementRef<HTMLDivElement>;
   savePdf(bookedSeat : BookedSeats){
-    let textToTransfert : string = 'Titre ' + this.title;
     let DATA = this.htmlData.nativeElement;
 
     let doc = new jsPDF({
@@ -163,7 +177,7 @@ export class PagePaymentComponent implements OnInit {
 
     doc.text(this.movieSelected.title, 35, 25);
     doc.text(this.showSelected.showSchedule.showDate.toString() + ' - ' + this.showSelected.showSchedule.startingHour, 35, 35);
-    doc.text("Rang : "+ bookedSeat.placeBookedRow + " place : " + bookedSeat.placeBookedColumn, 35, 45);
+    doc.text("Rang : "+ this.functionConvertPositionToAlphabet(bookedSeat.placeBookedRow) + " place : " + bookedSeat.placeBookedColumn, 35, 45);
       console.log(this.movieSelected.poster);
 
     doc.addImage("https://lh3.googleusercontent.com/proxy/QY22Til0mKvOvq-nvCgj1Kh9u-jr93YqOsxsBHNqVdnrOg_O5Rt_9y6o6UmTx23WJchVry-ElXPjoRT5tqsBIJZpEruzm8WcgmpLQEMdg8QpnyU", "JPEG", 55, 100, 80, 80);
@@ -181,9 +195,10 @@ export class PagePaymentComponent implements OnInit {
           this.showSelected = show;
           this.roomSelected = show.showRoom;
           // retourner les places reservées pour cette séance 
-          this.bookedSeatsService.getBookedSeatsByShow(this.showSelected)
+          this.bookedSeatsService.getBookedSeatsByShow(this.showSelected.id)
           .subscribe( data => {
             this.bookedSeats = data;
+            console.log(data);
           });
         }
       })

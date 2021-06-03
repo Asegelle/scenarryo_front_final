@@ -23,7 +23,13 @@
             <div class="form-check mt-3">
                 <input class="form-check-input" type="radio" name="paymentType" id="paymentPaypal" >
                 <label class="form-check-label" for="paymentPaypal">
-                    Paypal
+                    <i class="fa fa-cc-paypal"></i>
+                </label>
+            </div>
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="radio" name="paymentType" id="paymentMasterCard" >
+                <label class="form-check-label" for="paymentMasterCard">
+                    <i class="fa fa-cc-mastercard"></i>
                 </label>
             </div>
             <div class="form-check mt-3">
@@ -40,7 +46,7 @@
                 </div>
                 <div class="col-md-3 ">
                     <button (click)="handleClickTermsOfUse()"
-                            class="btn btn-success"
+                            class="btn btn-secondary"
                     ><i class="fa fa-info"></i></button>
                 </div>
 
@@ -50,28 +56,37 @@
             <table class="table table-sm mt-3">
                 
                 <tbody>
-                    
+                    <tr>
+                        <td [attr.colspan]="roomSelected?.columnsNumber"> <div class="screen"></div> </td>
+                    </tr>
                     <tr *ngFor = "let item of  [].constructor(roomSelected?.rowsNumber) ; let i = index">
-                        <td *ngFor = "let item of  [].constructor(roomSelected?.columnsNumber) ; let j = index" >{{ handleClickCheckSeatAvailable(i+1,j+1) }}</td>
+                        <td>
+                            <button class="btn btn-light" disabled> 
+                                    {{functionConvertPositionToAlphabet(i+1)}}
+                            </button>
+                        </td>
+                        <td *ngFor = "let item of  [].constructor(roomSelected?.columnsNumber) ; let j = index" >
+                            <span  *ngIf = "handleClickCheckSeatAvailable(i+1,j+1); else elseBlock"> 
+                                <button class="btn btn-warning" 
+                                        (click) = "handleClickGetSeatRowAndColumn(i+1,j+1)"
+                                    ><i class="fa fa-check-circle"></i></button>
+                            </span>
+                            <ng-template #elseBlock> 
+                                <button class="btn btn-light" disabled> 
+                                    <i class="fa fa-times-circle"></i>
+                                </button>  
+                            </ng-template>
+                        </td>
                     </tr>
                     
                 </tbody>
             </table>
             <form (ngSubmit)="handleClickPayment(f)" #f="ngForm">
-                <div class="row">
-                    <div class="col-2">
-                        <input type = "number" name="placeBookedRow" class="form-control" placeholder="Numéro de row" value="1" ngModel>
-                    </div>
-                    <div class="col-2">
-                        <input type = "number" name="placeBookedColumn" class="form-control" placeholder="Numero de column" value="1" ngModel>
-                    </div>
-                    
-                    
-                </div> 
+                
                 <div class="row">
                     
                 </div>
-                <div class="m-4 offset-2" #htmlData>
+                <div class=" col-2 m-4 offset-6" #htmlData>
                     <button type="submit" class="btn btn-success" >
                         Paiement
                     </button>

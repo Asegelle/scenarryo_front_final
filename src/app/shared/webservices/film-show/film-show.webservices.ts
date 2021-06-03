@@ -26,6 +26,8 @@ export class FilmShowWebService {
   deleteFilmShow(id: number):Observable<FilmShow> {
     return this.http.delete<FilmShow>(`${this.filmShowUrl}/delete-filmshow/`+id)
   }
+  
+  
   // bookASeat(showOfThisMovie: FilmShow) :Observable<FilmShow>{
   //   return this.http.put<FilmShow>(`${this.filmShowUrl}/book-seat`,showOfThisMovie);
   // }

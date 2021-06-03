@@ -18,10 +18,20 @@
   <form (ngSubmit)="handleClickAddRoom(formAddRoom)" #formAddRoom="ngForm">
       <div class="row">
         <div class="col-2">
-            <input name="roomNumber" class="form-control" placeholder="Numéro salle" ngModel>
+            <input name="roomNumber" class="form-control" placeholder="Numéro salle"  ngModel>
         </div>
         <div class="col-2">
-            <input name="seatsQuantity" class="form-control" placeholder="Nombre de place" ngModel>
+            <input name="rowsNumber" #rows 
+                    class="form-control" 
+                    type="number"
+                    placeholder="Nombre de rang"  ngModel>
+        </div>
+        
+        <div class="col-2">
+            <input name="columnsNumber" type="number" #cols class="form-control" placeholder="Nombre de place par rang"  ngModel>
+        </div>
+        <div class="col-2">
+            <input name="seatsQuantity" type="number" #seatsQuantity class="form-control" placeholder="Nombre de place" ngModel>
         </div>
         
         <div class="col-2">
@@ -43,6 +53,8 @@
           <tr>
             <th scope="col">Numéro de la salle</th>
             <th scope="col">Nombre de place</th>
+            <th scope="col">Nombre rang</th>
+            <th scope="col">places par rang</th>
             <th scope="col">Nombre de séance programmé</th>
             <th scope="col">Actions </th>
             
@@ -52,6 +64,8 @@
           <tr *ngFor="let room of roomList; let i = index">
             <td>{{ room.roomNumber }}</td>
             <td>{{ room.seatsQuantity }}</td>
+            <td>{{ room.rowsNumber }}</td>
+            <td>{{ room.columnsNumber }}</td>
             <td>{{ room.filmShow.length }}</td>
             <td>
               <button class="btn btn-danger"
