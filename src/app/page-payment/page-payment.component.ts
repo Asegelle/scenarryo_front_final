@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { BookedSeats } from '../shared/models/booked-seats';
@@ -10,6 +10,9 @@ import { BookedSeatsService } from '../shared/webservices/booked-seats/booked-se
 import { FilmShowWebService } from '../shared/webservices/film-show/film-show.webservices';
 import { MovieWebService } from '../shared/webservices/movie/movie.webservice';
 import { ScheduleWebService } from '../shared/webservices/schedule/schedule.webservices';
+
+import { jsPDF} from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-page-payment',
@@ -56,14 +59,11 @@ export class PagePaymentComponent implements OnInit {
     this.bookedSeatsService.bookASeat(bookedSeat)
     .subscribe(
       data => {
-        alert('En attente de confirmation de votre Banque');
-        // ici voir si utile -------------------------------------------------------------------
+        this.savePdf(bookedSeat);
         this.reloadData();
-        window.location.reload();
 
       }
     );
-    // TODO ------------faire redirection ou generation du PDF 
   }
 
   
@@ -94,6 +94,81 @@ export class PagePaymentComponent implements OnInit {
     }
   }
   this.router.navigate(['terms-of-use'],queryNavigation);
+  }
+
+  @ViewChild('content', { static: true}) el!: ElementRef<HTMLImageElement>;
+  pdf(){
+    html2canvas(this.el.nativeElement).then( (canvas) => {
+      const imgData = canvas.toDataURL('image/jpeg');
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+      });
+      const imageProps = pdf.getImageProperties(imgData);
+      const pdfw = pdf.internal.pageSize.getWidth();
+      const pdfh = (imageProps.height*pdfw)/ imageProps.width;
+
+      pdf.addImage(imgData,'PNG',0,0,pdfw,pdfh);
+      pdf.save('myPdf.pdf');
+
+    })
+  }
+  title = 'Harry Poter ';
+  @ViewChild('htmlData', {static : true}) htmlData!:ElementRef<HTMLDivElement>;
+  savePdf(bookedSeat : BookedSeats){
+    let textToTransfert : string = 'Titre ' + this.title;
+    let DATA = this.htmlData.nativeElement;
+
+    let doc = new jsPDF({
+        orientation: 'portrait',
+      });
+    
+    //  transform the image to a dataURL
+    // code ne marche pas 
+    // html2canvas(this.htmlData.nativeElement).then(
+    //   (canvas) => {
+    //     const posterToURL = canvas.toDataURL('image/jpeg');
+    //     const imageProps = doc.getImageProperties(posterToURL);
+    //     const pdfw = doc.internal.pageSize.getWidth() * 0.8;
+    //     const pdfh = (imageProps.height*pdfw)/ imageProps.width;
+    //     doc.addImage(posterToURL,'PNG',35,55,pdfw,pdfh);
+    //     console.log(' je suis dan html2canvas ');
+    //     console.log(posterToURL);
+
+    //   }
+    // )
+
+    /* 
+      son code HTML 
+      <div>
+        <button (click) = "savePdf()">2ieme methode</button>
+        <div #htmlData>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>
+            <img src="{{ movieSelected?.poster }}" width="200px">
+        </div>
+    </div>
+      ------------------ HTML del aofnction pdf()
+
+    <div>
+        <h1>titre </h1>
+
+        <h2>Convertir HTML to PDF </h2>
+        <button (click) = "pdf()">Covertir Pdf</button>
+        <div id="content" #content>
+            <h1>this is the pdf </h1>
+            <p>Générer par Princess Yousra </p>
+        </div>
+    </div>
+    */
+
+
+    doc.text(this.movieSelected.title, 35, 25);
+    doc.text(this.showSelected.showSchedule.showDate.toString() + ' - ' + this.showSelected.showSchedule.startingHour, 35, 35);
+    doc.text("Rang : "+ bookedSeat.placeBookedRow + " place : " + bookedSeat.placeBookedColumn, 35, 45);
+      console.log(this.movieSelected.poster);
+
+    doc.addImage("https://lh3.googleusercontent.com/proxy/QY22Til0mKvOvq-nvCgj1Kh9u-jr93YqOsxsBHNqVdnrOg_O5Rt_9y6o6UmTx23WJchVry-ElXPjoRT5tqsBIJZpEruzm8WcgmpLQEMdg8QpnyU", "JPEG", 55, 100, 80, 80);
+
+     doc.save('pdfsimple.pdf');
   }
 
 

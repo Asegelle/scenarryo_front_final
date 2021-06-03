@@ -9,27 +9,27 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 export class TermsOfUseComponent implements OnInit {
   // movieId : number ;
   // showId : number ;
-  idShow : number;
-  idMovie : number;
+  idShowReceived : number;
+  idMovieReceived : number;
   constructor(private router : Router,
               private route :ActivatedRoute
   ){ this.route.queryParams.subscribe(
                 params => {
-                  this.idShow = Number(params.idShow);
-                  this.idMovie = Number(params.idMovie);
+                  this.idShowReceived = Number(params.idShow);
+                  this.idMovieReceived = Number(params.idMovie);
                   
                 })
       }
 
   ngOnInit(): void {
-    
+    console.log(this.idShowReceived);
   }
 
   hundleClickAccepteTermsOfUse(){
     let queryNavigation : NavigationExtras = {
       queryParams : {
-        idShow : this.idShow,
-        idMovie : this.idMovie
+        idShow : this.idShowReceived,
+        idMovie : this.idMovieReceived
       }
     }
     this.router.navigate(['page-payment'],queryNavigation);
