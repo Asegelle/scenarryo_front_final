@@ -60,7 +60,7 @@ export class GestionMoviesComponent implements OnInit {
   // Fonction recherche par titre sur l'API
 
   handleClickFindMovie(formFindMovie: NgForm) {
-    // recherche la lite d film avec la recherche "s"
+    // recherche la liste d film avec la recherche "s"
     let url = 'http://www.omdbapi.com/?apikey=efdc2275&s=' + this.title + this.typeMovie;
 
     this.http.get<any>(url).subscribe(
