@@ -53,6 +53,9 @@ export class GestionMoviesComponent implements OnInit {
     this.movieWebService.deleteMovieService(deleteMovie).subscribe(
       (data: Movie) => {
         data = deleteMovie;
+
+        // refresh components after click
+        this.ngOnInit();
       });
 
   }
@@ -74,6 +77,8 @@ export class GestionMoviesComponent implements OnInit {
           this.http.get<any>(url).subscribe(
             (data) => {
               this.moviesListApi[i] = data;
+
+              
             });
         }
       });
@@ -130,6 +135,9 @@ export class GestionMoviesComponent implements OnInit {
     this.movieWebService.addMovieService(this.movie).subscribe(
       (data: Movie) => {
         data = this.movie;
+
+        // refresh components after click
+        this.ngOnInit();
        
 
       });

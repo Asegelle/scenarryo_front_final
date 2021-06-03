@@ -1,0 +1,73 @@
+.contenair-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    align-items: stretch;
+    
+}
+
+.card { // contour général
+    margin: 5px;
+    height: 27rem;
+    width: 15rem;
+}
+
+.card-body { // box parentes et enfant
+    display: flex;
+    flex-direction: column;
+    align-items:stretch;
+    height:15rem;
+    width: auto;
+}
+
+
+
+.card-title { // box titre
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.card-img { // box poster du film
+    
+    height: 280px;
+    width: auto;
+    background-color: black;
+
+    
+}
+
+
+
+.btn { // box bouton lien vers détails
+  
+    height: auto;
+    width: auto;
+    font-size:  20px;
+}
+
+
+
+
+
+.banniere {
+    
+    border: 3px,  black, solid,;
+    height: 250px;
+    width: 100%; 
+}
+
+
+
+
+////////////////////////////////////////////////////// advertise ////////////////////////////////////////////////////@at-root
+.contenair-advert {
+
+    margin-top: 10%;
+
+    display: flex;
+   
+    justify-content:space-around;
+    align-items:stretch;
+
+    
+}
