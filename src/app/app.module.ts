@@ -34,6 +34,8 @@ import { PagePaymentComponent } from './page-payment/page-payment.component';
 import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 import { PageQuizzComponent } from './page-quizz/page-quizz.component';
 
+import { ChartsModule } from 'ng2-charts';
+
 /* Traduction de la date en français  */
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -71,7 +73,8 @@ registerLocaleData(localeFr,'fr-FR',localeFrExtra);
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
     
   ],
   providers: [
