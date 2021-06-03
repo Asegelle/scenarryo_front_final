@@ -15,15 +15,12 @@ import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageMovieDetailsComponent } from './page-movie-details/page-movie-details.component';
 
 import { PageOnDisplayComponent } from './page-on-display/page-on-display.component';
-<<<<<<< Updated upstream
 import { PagePaymentComponent } from './page-payment/page-payment.component';
 import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
-=======
 import { PageQuizzComponent } from './page-quizz/page-quizz.component';
->>>>>>> Stashed changes
 
 const routes: Routes = [
   {path:'', component: HomePageComponent},

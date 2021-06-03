@@ -25,7 +25,6 @@ import { PageContactComponent } from './page-contact/page-contact.component';
 import { PageAdminComponent } from './page-admin/page-admin.component';
 import { GestionMoviesComponent } from './page-admin/gestion-movies/gestion-movies.component';
 import { GestionSchedulesComponent } from './page-admin/gestion-schedules/gestion-schedules.component';
-<<<<<<< Updated upstream
 import { RoomWebService } from './shared/webservices/room/room.webservice';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,10 +32,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './shared/helpers/auth.interceptor';
 import { PagePaymentComponent } from './page-payment/page-payment.component';
 import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
-=======
-import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
 import { PageQuizzComponent } from './page-quizz/page-quizz.component';
->>>>>>> Stashed changes
 
 /* Traduction de la date en français  */
 import { registerLocaleData } from '@angular/common';
@@ -61,7 +57,6 @@ registerLocaleData(localeFr,'fr-FR',localeFrExtra);
     GestionRoomsComponent,
     GestionSchedulesComponent,
     GestionFilmShowesComponent,
-<<<<<<< Updated upstream
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
@@ -69,10 +64,8 @@ registerLocaleData(localeFr,'fr-FR',localeFrExtra);
     BoardUserComponent,
     BoardModeratorComponent,
     PagePaymentComponent,
-    TermsOfUseComponent
-=======
+    TermsOfUseComponent,
     PageQuizzComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
