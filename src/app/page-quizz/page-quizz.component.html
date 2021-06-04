@@ -1,19 +1,43 @@
-<h1>QUIZZ</h1>
+<section class="quizz">
+    <h1>QUIZZ</h1>
 
-<h2>Question {{ numberOfQuestion }} </h2>
+    <div class="container">
+        <!-- gestion de la 1ere page du quizz -->
+        <div *ngIf="accueilQuizz===0" class="accueilQuizz">
+            <h2>Quizz Harry Potter</h2>
+            <!-- <img src="assets/quizzHarryPotter.jpg" class="imgQuizzPotter" /> -->
+            <button class="btnStartQuizz" (click)="handleClickStartQuizz()" >COMMENCER LE QUIZZ</button>
+        </div>
+            
+        <!-- affichage questions et réponses -->
+        <div *ngIf="accueilQuizz != 0" class="contenant">
+            <h2 *ngIf="indexQuestion != 10">Question {{ numberOfQuestion }} </h2> 
 
-<!-- <p *ngFor="let question of questionList; let index = index"> {{ question[index] }} </p> -->
-<p> {{ questionList[0] }} </p>
 
-<form method="POST" >
-<div>
-    <button (click)="handleClickResponseQuizz(0)" > {{ responseList[0] }} </button>
-    <button (click)="handleClickResponseQuizz(1)"> {{ responseList[1] }} </button>
-</div>
+            <p class="question"> {{ questionList[0] }} </p>
 
-<div>
-    <button (click)="handleClickResponseQuizz(2)"> {{ responseList[2] }} </button>
-    <button (click)="handleClickResponseQuizz(3)"> {{ responseList[3] }} </button>
-</div>
-    <input type="submit" value="Valider" (click)="handleClickQuestionForm()" />
-</form>
+                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(0)" > {{ responseList[0] }} </button>
+                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(1)"> {{ responseList[1] }} </button>
+                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(2)"> {{ responseList[2] }} </button>
+                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(3)"> {{ responseList[3] }} </button>
+
+                <!-- gestion de la dernière page du Quizz -->
+                <div class="score" *ngIf="indexQuestion === 10">
+                    <p>Votre score est de : {{score}}/10</p>
+
+                    <p *ngIf="score === 10">BRAVO, vous avez gagné une place de cinéma.</p>
+                    <p *ngIf="score === 10">Vous recevrez votre place par email</p>
+                    
+                </div>
+                
+                <!-- TODO btnQuestion suivante -->
+            <!-- <button *ngIf="indexQuestion != 10" class="btnQuestionSuivante">Question suivante >></button> -->
+
+            
+            <button *ngIf="indexQuestion === 10" class="btnPlayAgain" (click)="handleClickNextBtn()">Rejouer</button>
+        </div>
+    </div>
+    
+    <img class="potter" src="assets/potter.jpg" alt="Harry Potter">
+
+</section>
