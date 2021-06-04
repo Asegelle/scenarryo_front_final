@@ -26,11 +26,13 @@ export class MovieWebService {
   constructor(private http: HttpClient) {
     this.urlSpringMovies = 'http://localhost:8080/admin/';
     // a mettre en api web service
-    this.sUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s=';
-    this.tUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&t=';
+    this.sUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&s='; // give back a Json List with only 5 info 
+    this.tUrlAPIMovies='https://www.omdbapi.com/?apikey=50b53390&t='; // give back a unique Json with more informations
   }
 
+//---------------------------------------------------------------------------
 
+  // ------------------------- getAllComments --------------------------
 
   getMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.urlSpringMovies + 'movie');
@@ -63,7 +65,13 @@ export class MovieWebService {
   addMovieService(newMovie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.urlSpringMovies + 'addmovie', newMovie);
 
-  }
+  } 
+
+
+  //---------------------------------------------------------------------------
+
+  // ------------------------- getAllComments --------------------------
+
 
   updateSchedules(id:number, movie:Movie): Observable<Movie>{
     console.log(this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie));
@@ -71,9 +79,6 @@ export class MovieWebService {
   }
 
 
-  //---------------------------------------------------------------------------
-
-  // ------------------------- getAllComments --------------------------
   /**
    * function getAllComments :
    * @returns this.http.get<MovieComments[]>(`${this.urlMovies}/comments`);

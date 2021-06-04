@@ -1,7 +1,7 @@
+import { ChartsModule } from 'ng2-charts';
 import { ApiMovieWebService } from './shared/webservices/api-movie/apiMovie.webservice';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -10,12 +10,10 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieWebService } from './shared/webservices/movie/movie.webservice';
 import { MovieService } from './shared/services/movie/movie.service';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { GestionRoomsComponent } from './page-admin/gestion-rooms/gestion-rooms.component';
 import { PageOnDisplayComponent } from './page-on-display/page-on-display.component';
-
 import { GestionFilmShowesComponent } from './page-admin/gestion-film-showes/gestion-film-showes.component';
-
 import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
@@ -34,7 +32,6 @@ import { PagePaymentComponent } from './page-payment/page-payment.component';
 import { TermsOfUseComponent } from './page-payment/terms-of-use/terms-of-use.component';
 import { PageQuizzComponent } from './page-quizz/page-quizz.component';
 
-import { ChartsModule } from 'ng2-charts';
 
 /* Traduction de la date en français  */
 import { registerLocaleData } from '@angular/common';
@@ -75,7 +72,6 @@ registerLocaleData(localeFr,'fr-FR',localeFrExtra);
     HttpClientModule,
     FormsModule,
     ChartsModule
-    
   ],
   providers: [
     MovieService,
