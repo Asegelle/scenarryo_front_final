@@ -31,11 +31,4 @@ export class Movie {
         this.filmComment=filmComment;
     }
 
-
-        /*
-            fullDescription():string {
-                return this.id+' '+this.title+' '+this.producer+' '+this.releaseDate+' '+this.ageLimit+' '+this.synopsis+' '+this.duration;
-            }
-        */
-
 }

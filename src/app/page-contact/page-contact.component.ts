@@ -129,7 +129,7 @@ export class PageContactComponent implements OnInit, AfterViewInit {
       const myIcon = L.icon({
         iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
       });
-      L.marker([this.userLattitude, this.userLongitude], {icon: myIcon}).bindPopup('USER').addTo(this.map).openPopup();
+      L.marker([this.userLattitude, this.userLongitude]);
 
 
   
