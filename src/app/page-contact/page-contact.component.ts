@@ -129,14 +129,62 @@ export class PageContactComponent implements OnInit, AfterViewInit {
       const myIcon = L.icon({
         iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/marker-icon.png'
       });
-      L.marker([this.userLattitude, this.userLongitude], {icon: myIcon}).bindPopup('USER').addTo(this.map).openPopup();
-
-
+      L.marker([this.userLattitude, this.userLongitude], {icon: myIcon}).bindPopup('Votre position').addTo(this.map).openPopup();
+      console.log('apres marker '+this.userLattitude+','+ this.userLongitude);
+      
+      // la ligne en haut elle dit que undefined 
+      
+      // ------------------------------------------ mon code  +++++++++++++++++++++++++++++++++++++++++
+      //creation de l'itineraire a l'affichage
+      // L.Routing.control({
+      //   // // Nous personnalisons le tracé
+      //   // lineOptions: {
+      //     //   styles: [{color: '#ff8f00', opacity: 1, weight: 7}]
+      //     // },
+          
+      //     // // Nous personnalisons la langue et le moyen de transport
+      //     //   router: new L.Routing.osrmv1({
+      //       //   language: 'fr',
+      //       //   profile: 'car', // car, bike, foot
+      //       // }),
+      //       waypoints: [
+      //         L.latLng(scenarryoLattitude, scenarryoLongitude),
+      //         L.latLng(this.userLattitude, this.userLongitude)
+      //       ],
+      //       routeWhileDragging: true,
+      //       geocoder: L.Control.Geocoder.nominatim()
+      //     }).addTo(this.map);
+          
+      //     console.log('apres routing '+this.userLattitude+','+ this.userLongitude);
+      //     console.log('apres routing '+scenarryoLattitude+','+ scenarryoLongitude);
   
 
-//////////////////////////////////////////////////////
-///    Affichage de la map avec l'itinéraire      ////
-/////////////////////////////////////////////////////      
+    //////////////////////////////////////////////////////
+    ///    Affichage de la map avec l'itinéraire      ////
+    /////////////////////////////////////////////////////   
+      ////////////////////////////////////////////////
+//////////////    TO DO        ////////////////
+///////////////////////////////////////////////
+    // //creation de l'itineraire a l'affichage
+    // L.Routing.control({
+    //     // Nous personnalisons le tracé
+    //     lineOptions: {
+    //       styles: [{color: '#ff8f00', opacity: 1, weight: 7}]
+    //     },
+
+    //     // Nous personnalisons la langue et le moyen de transport
+    //       router: new L.Routing.osrmv1({
+    //       language: 'fr',
+    //       profile: 'car', // car, bike, foot
+    //     }),
+    //       waypoints: [
+    //         L.latLng(47.2272173, -1.6186182),
+    //         L.latLng(47.2272173, -1.6186182)
+    //     ],
+    //     routeWhileDragging: true,
+    //     geocoder: L.Control.Geocoder.nominatim()
+    // }).addTo(this.map);
+
 
   }
 

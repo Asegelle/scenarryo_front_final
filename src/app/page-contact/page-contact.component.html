@@ -1,22 +1,228 @@
-<h1>Contact</h1>
 
-<h2>Itinéraire du cinéma selon votre adresse</h2>
+<!--     mon code -->
+<!-- calculate costumer route -->
+<div class="row m-5">
+  <div class="col-md-12">
 
-<form class="AdresseForm" #formItineraire="ngForm" (ngSubmit)="handleClickItineraire(formItineraire)">
-  <input type="text" placeholder="N° " name="streetNumber"  #ctrl="ngModel" ngModel/> 
-  <input type="text" placeholder="Type de rue " name="streetType" #ctrl="ngModel"  ngModel/>
-  <input type="text" placeholder="Nom de la rue " name="streetName" #ctrl="ngModel"  ngModel/>
-  <input type="text" placeholder="Nom de la ville " name="cityName" #ctrl="ngModel"  ngModel/>
-  <button type="submit"  > Calcul itinéraire </button>
-</form> 
-
-<div class="urlItineraire">
-  <a href="{{itineraireURL}}">Cliquez ici pour voir votre itinéraire</a>
+    <h3>Nous rejoindre</h3>
+    <div class="d-flex flex-row bd-highlight mb-0">
+  
+      <div class="ms-3 p-2 w-100 bd-highlight pb-0">
+        <div class="card my-5 col-11 mb-0 ">
+          <div class="card-body">
+            <!-- left element -->
+            <h4 class="card-title">Saisir votre adresse</h4>
+  
+            <form  #formItineraire="ngForm" (ngSubmit)="handleClickItineraire(formItineraire)">
+              <div class="form-group m-2">
+                <label >N° *:</label>
+              </div>
+              <div class="form-group m-2">
+                <input type="number"  name="streetNumber"  #ctrl="ngModel" ngModel/> 
+              </div>
+  
+              <div class="form-group m-2">
+                <label >Type de rue *:</label>
+              </div>
+              <div class="form-group">
+                <select type="select" class="form-select" name="streetType" #ctrl="ngModel"  ngModel>
+                  <option value="rue" >Rue</option>
+                  <option value="Allée">Allée</option>
+                  <option value="Impasse">Impasse</option>
+                  <option value="Route">Route</option>
+                  <option value="Boulevard">Boulevard</option>
+                  <option value="Chemin">Chemin</option>
+                  <option value="Avenue">Avenue</option>
+                  <option value="Place">Place</option>
+                  <option value="Quai">Quai</option>
+                </select>
+              </div>
+  
+              <div class="form-group m-2">
+                <label >Nom de la rue *:</label>
+              </div>
+              <div class="form-group m-2">
+                <input type="text"  name="streetName" #ctrl="ngModel"  ngModel/>
+              </div>
+              
+              <div class="form-group m-2">
+                <label >Nom de la ville  *:</label>
+              </div>
+              <div class="form-group m-2">
+                <input type="text"  name="cityName" #ctrl="ngModel"  ngModel/>
+              </div>
+  
+              <div class="form-group m-3">
+                <button type="submit" class="btn btn-success">
+                  <i class="fa fa-search-plus"></i>
+                </button>
+              </div>
+            </form> 
+          </div>
+        </div>
+        
+      </div>
+      <div class="app-booking-details me-3 p-2 bd-highlight">
+              <div class="card my-5 col-12">
+  
+                  <div class=" card-body">
+                    <!-- right  element -->
+  
+                    <h4 class="mb-2 card-title">afin de visualiser votre Itinéraire</h4>
+                    <div class="card-text" *ngIf="isAvailable">
+                      <a href="{{itineraireURL}}">Cliquez ici pour voir votre itinéraire</a>
+                    </div>
+                    <div id="map" class="mt-5"></div>
+                    
+                  </div>
+               </div>
+        </div>
+    </div>
+  </div>
 </div>
 
-  <div class="map-container">
-      <div class="map-frame">
-        <div id="map"></div>
+<!-- cinema information  -->
+<div class="row m-5">
+    <div class="col-md-12 ">
+        <h3>Qui sommes nous ?</h3>
+          <dl>
+            <dt>
+              Notre historique
+            </dt>
+            <dd>
+              Dès sa création à Paris, <strong>en 1985</strong> , 
+              ib s'est positionnée sur le marché de la formation informatique en proposant une offre de formations
+               informatiques à forte valeur ajoutée. <strong>En 1999</strong> , 
+               ib devient filiale du Groupe Cegos, leader européen du management par les compétences. 
+               Les synergies qui en découleront permettront notamment à ib de renforcer son savoir-faire pédagogique
+                et ses capacités d'innovation.
+            </dd>
+            <dt>
+              Chiffre d'affaire 
+            </dt>
+            <dd>
+              Sur l'année <strong>2019</strong> nous avons réalisé un chiffre d'affaires de 3 427 650,00 €.
+            </dd>
+            <dd>
+              Le total du bilan a augmenté de 2,86 % entre 2018 et 2019.
+            </dd>
+            <dt>
+              L'avis des autres 
+            </dt>
+            <dd>
+              Lire ce que les autres disent sur nous. <a href="https:/google.com">Voir plus</a>
+            </dd>
+            
+          </dl>
+        </div>
+    
+</div>
+<div class="row m-5">
+    <div class="col-md-12">
+      <h3>Comment nous rejoindre ? </h3>
+      <address>
+				 <strong>Cinéma scénarry'o, Inc.</strong><br /> 2 Impasse Augustin Fresnel<br /> 44800 Saint-Herblain <br /> <abbr title="Phone">P:</abbr> (123) 456-7890
+			</address>
+      <dt>
+        <a href="https://www.tan.fr/" target="_blank">Via BUS ici</a>
+      </dt>
+      <dd>
+        Visiter nous depuis Nantes Métropole.
+      </dd>
+      <dt>
+        <a href="https://www.nantes.aeroport.fr/fr" target="_blank">Via Nantes AÉROPORT ici</a>
+      </dt>
+      <dd>
+        Visiter nous depuis le reste de la France.
+      </dd>
+    </div>
+    
+</div>
+
+  <!-- our information -->
+<div class="row m-5">
+    <div class="col-md-12">
+      <h3 class="mt-5">L'équipe de développement </h3>
+      <div class="row">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/src/assets/alexandre.jpg" alt=" photo Alexandre Segelle">
+          <div class="card-body">
+            <h5 class="card-title">Alexandre Segelle </h5>
+            <p class="card-text">Docteur en Biologie Santé, la recherche et l’innovation ont toujours été au cœur de mon métier. 
+              La veille scientifique et technique ainsi que la coopération au niveau européen m’ont permis d’identifier 
+              les techniques et technologies actuelles les plus probantes pour construire et réaliser mon projet.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Spring Boot</li>
+            <li class="list-group-item">Angular 11</li>
+            <li class="list-group-item">HTML & CSS, Bootstrap</li>
+          </ul>
+          <div class="card-body">
+            <a href="https://www.linkedin.com/in/alexandre-segelle/" class="card-link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/alexandre-segelle/" class="card-link">Facebook</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/src/assets/renaud.jpg" alt=" photo Renaud TOUGERON ">
+          <div class="card-body">
+            <h5 class="card-title">Renaud TOUGERON</h5>
+            <p class="card-text">Développeur Java chez ib - groupe Cegos
+                Nantes et périphérie .</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Spring Boot</li>
+            <li class="list-group-item">Angular 11</li>
+            <li class="list-group-item">HTML & CSS, Bootstrap</li>
+          </ul>
+          <div class="card-body">
+            <a href="https://www.linkedin.com/in/renaud-tougeron-76527a166/" class="card-link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/renaud-tougeron-76527a166/" class="card-link">Facebook</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/src/assets/romain.jpg" alt=" photo Romain LEMAIRE ">
+          <div class="card-body">
+            <h5 class="card-title">Renaud TOUGERON</h5>
+            <p class="card-text">Alternance ou CDI Développeur Java SE, JEE (Spring Boot), AngularJS et JavaScript
+              Nantes, Pays de la Loire, France.
+              En reconversion dans le domaine du numérique, précisément dans la programmation informatique.
+              Ce choix fait suite à une volonté d’épanouissement professionnel et personnel dans un environnement 
+              passionnant en constante évolution.
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Spring Boot</li>
+            <li class="list-group-item">Angular 11</li>
+            <li class="list-group-item">HTML & CSS, Bootstrap</li>
+          </ul>
+          <div class="card-body">
+            <a href="https://www.linkedin.com/in/romain-lemaire-dev-java/" class="card-link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/romain-lemaire-dev-java/" class="card-link">Facebook</a>
+          </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="/src/assets/yousra.jpg" alt=" photo Yousra SHAKI">
+          <div class="card-body">
+            <h5 class="card-title">Yousra SHAKI</h5>
+            <p class="card-text">Développeuse FULL STACK spécialisée BACK END
+                Nantes et périphérie .
+              Je cherche une opportunité pour mettre à profit mes compétences en développement.</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Spring Boot</li>
+            <li class="list-group-item">Angular 11</li>
+            <li class="list-group-item">HTML & CSS, Bootstrap</li>
+          </ul>
+          <div class="card-body">
+            <a href="https://www.linkedin.com/in/yousrashaki/" class="card-link">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yousrashaki/" class="card-link">Facebook</a>
+          </div>
+        </div>
+
       </div>
-  </div>
+    </div>
+    
+</div>
+<div class="row mt-5"></div>
+
 
