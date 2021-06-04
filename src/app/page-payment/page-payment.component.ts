@@ -180,7 +180,7 @@ export class PagePaymentComponent implements OnInit {
     doc.text("Rang : "+ this.functionConvertPositionToAlphabet(bookedSeat.placeBookedRow) + " place : " + bookedSeat.placeBookedColumn, 35, 45);
       console.log(this.movieSelected.poster);
 
-      doc.addImage("https://upload.wikimedia.org/wikipedia/commons/7/78/Qrcode_wikipedia_fr_v2clean.png", "JPEG", 55, 100, 80, 80);
+      doc.addImage("https://y-shak.github.io/img/Qrcode_projet_cinema.png", "JPEG", 55, 100, 80, 80);
      doc.save('pdfsimple.pdf');
   }
 
