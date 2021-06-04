@@ -1,83 +1,117 @@
+<div class="p-4 pe-5 ps-5 ms-5 me-5 text-center bg-image mt-3 app-banner-image">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <div class="d-flex justify-content-center mt-3 mb-3">
+          <div>
+            <h1 class="app-title">Gestion Administrateur</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ms-5 me-5">
   <div class="container">
-    <div class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a [routerLink]="['/page-admin']" class="nav-link active" aria-current="page">Overview</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-movies']" class="nav-link">Films</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-rooms']" class="nav-link">Salles</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-schedules']" class="nav-link">Horaires</a></li>
-        <li class="nav-item"><a [routerLink]="['/gestion-film-showes']" class="nav-link">Séances</a></li>
+    <a class="navbar-brand text-warning" href="#">Administrateur</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/page-admin']">Overview
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-movies']">Films</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-rooms']">Salles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-schedules']">Horaires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-film-showes']">Séances</a>
+        </li>
       </ul>
     </div>
   </div>
+</nav>
 
 
-  <h2>Section Admin </h2>
-  <h3>Ajouter une nouvelle salle </h3>
-  <form (ngSubmit)="handleClickAddRoom(formAddRoom)" #formAddRoom="ngForm">
+<h3 class="mt-5 ms-4 mb-4">Ajouter une nouvelle salle </h3>
+
+
+<div class="card my-5 col-11 ms-4">
+  <div class="card-body">
+    <form (ngSubmit)="handleClickAddRoom(formAddRoom)" #formAddRoom="ngForm" class="ms-3">
       <div class="row">
         <div class="col-2">
-            <input name="roomNumber" class="form-control" placeholder="Numéro salle"  ngModel>
+          <input name="roomNumber" class="form-control" placeholder="Numéro salle" ngModel>
         </div>
         <div class="col-2">
-            <input name="rowsNumber" #rows 
-                    class="form-control" 
-                    type="number"
-                    placeholder="Nombre de rang"  ngModel>
+          <input name="rowsNumber" #rows class="form-control" type="number" placeholder="Nombre de rang" ngModel>
         </div>
-        
+
         <div class="col-2">
-            <input name="columnsNumber" type="number" #cols class="form-control" placeholder="Nombre de place par rang"  ngModel>
+          <input name="columnsNumber" type="number" #cols class="form-control" placeholder="Nombre de place par rang"
+            ngModel>
         </div>
         <div class="col-2">
-            <input name="seatsQuantity" type="number" #seatsQuantity class="form-control" placeholder="Nombre de place" ngModel>
+          <input name="seatsQuantity" type="number" #seatsQuantity class="form-control" placeholder="Nombre de place"
+            ngModel>
         </div>
-        
+
         <div class="col-2">
-            <button type="submit" class="btn btn-success">
-                <i class="fa fa-plus"></i>
-            </button>
+          <button type="submit" class="btn btn-success">
+            <i class="fa fa-plus"></i>
+          </button>
         </div>
-      </div> 
+      </div>
       <div class="row">
-        
+
       </div>
     </form>
-  <h3>Gestion des salles</h3>
-
-  <div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Numéro de la salle</th>
-            <th scope="col">Nombre de place</th>
-            <th scope="col">Nombre rang</th>
-            <th scope="col">places par rang</th>
-            <th scope="col">Nombre de séance programmé</th>
-            <th scope="col">Actions </th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let room of roomList; let i = index">
-            <td>{{ room.roomNumber }}</td>
-            <td>{{ room.seatsQuantity }}</td>
-            <td>{{ room.rowsNumber }}</td>
-            <td>{{ room.columnsNumber }}</td>
-            <td>{{ room.filmShow.length }}</td>
-            <td>
-              <button class="btn btn-danger"
-                      (click) = "handleClickDeleteRoom(room.id)"
-              ><i class="fa fa-trash"></i>
-              </button>
-            </td>
-            
-          </tr>
-        </tbody>
-      </table>
-    </div>
   </div>
+</div>
 
+<h3 class="mt-5 ms-4 mb-4">Gestion des salles</h3>
 
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Numéro de la salle</th>
+          <th scope="col">Nombre de place</th>
+          <th scope="col">Nombre rang</th>
+          <th scope="col">places par rang</th>
+          <th scope="col">Nombre de séance programmé</th>
+          <th scope="col">Actions </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let room of roomList; let i = index">
+          <td>{{ room.roomNumber }}</td>
+          <td>{{ room.seatsQuantity }}</td>
+          <td>{{ room.rowsNumber }}</td>
+          <td>{{ room.columnsNumber }}</td>
+          <td>{{ room.filmShow.length }}</td>
+          <td>
+            <button class="btn btn-danger" (click)="handleClickDeleteRoom(room.id)"><i class="fa fa-trash"></i>
+            </button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

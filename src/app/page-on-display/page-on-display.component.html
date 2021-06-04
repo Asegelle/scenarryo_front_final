@@ -1,81 +1,91 @@
-<h1>A l'Affiche N'oublie pas la javaDoc </h1>
+<div class="p-4 pe-5 ps-5 ms-5 me-5 text-center bg-image mt-3 app-banner-image">
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <div class="d-flex justify-content-center mt-3 mb-3">
+          <div>
+            <h1 class="app-title">Films à l'Affiche</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Affiche</th>
-            <th scope="col">Producteur</th>
-            <th scope="col">Date de sortie</th>
-            <th scope="col">Durée</th>
-            <th scope="col">Limite d'âge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let movie of moviesList; let i = index">
-            <!-- debut yousra  modif-->
-            <td>
-              <p>{{ movie.title }}</p>
-              <button (click)="handleClickDisplaySchedule()" class="btn btn-secondary">
-                <i>Horaires</i>
-              </button>
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Titre</th>
+          <th scope="col">Affiche</th>
+          <th scope="col">Producteur</th>
+          <th scope="col">Date de sortie</th>
+          <th scope="col">Durée</th>
+          <th scope="col">Limite d'âge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movie of moviesList; let i = index">
+          <!-- debut yousra  modif-->
+          <td>
+            <p>{{ movie.title }}</p>
+            <button (click)="handleClickDisplaySchedule()" class="btn btn-secondary">
+              <i>Horaires</i>
+            </button>
 
-              <div [hidden]="isHidden">
+            <div [hidden]="isHidden">
 
-                <div class="card my-5 card-body">
-                  <table class="table table-bordered table-striped" >
-                    <thead class="bg-warning">
-						<tr>
-							<th *ngFor="let dateDisplayed of arrayDates"> {{ dateDisplayed | date:'MM-dd' }}</th>
-						</tr>
-                    </thead>
-                    <tbody>
-						
-						<tr *ngFor="let showOfThisMovie of movie.filmShow">
-							<td *ngFor="let dateDisplayed of arrayDates">
-								<span 
-									*ngIf = "(showOfThisMovie.showSchedule.showDate | date:'MM-dd') == (dateDisplayed| date:'MM-dd' ); else elseBlock">
-									<button class="btn btn-danger"
-											(click) = "handleClickBooking(showOfThisMovie,movie)"
-										><i>{{showOfThisMovie.showSchedule.startingHour}}</i>
-									</button> 
-									{{showOfThisMovie.bookedSeats}}
-								</span>
-							</td>
-						</tr>
-						<ng-template #elseBlock> <td ></td> </ng-template>
+              <div class="card my-5 card-body">
+                <table class="table table-bordered table-striped">
+                  <thead class="bg-warning">
+                    <tr>
+                      <th *ngFor="let dateDisplayed of arrayDates"> {{ dateDisplayed | date:'MM-dd' }}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
 
-					
-                      
-                    </tbody>
-                  </table>
-                </div>
+                    <tr *ngFor="let showOfThisMovie of movie.filmShow">
+                      <td *ngFor="let dateDisplayed of arrayDates">
+                        <span
+                          *ngIf="(showOfThisMovie.showSchedule.showDate | date:'MM-dd') == (dateDisplayed| date:'MM-dd' ); else elseBlock">
+                          <button class="btn btn-danger"
+                            (click)="handleClickBooking(showOfThisMovie,movie)"><i>{{showOfThisMovie.showSchedule.startingHour}}</i>
+                          </button>
+                          {{showOfThisMovie.bookedSeats}}
+                        </span>
+                      </td>
+                    </tr>
+                    <ng-template #elseBlock>
+                      <td></td>
+                    </ng-template>
 
 
 
+                  </tbody>
+                </table>
               </div>
 
-            </td>
-            <!-- fin yousra modif-->
-            <td><p><img src="{{ movie.poster }}" width="100"></p>
-              <button class="btn btn-warning" 
-              (click)="handleClickDetailsMovie(movie)"
-              
 
-              >
-                <i>Détails</i>
-              </button>
-            </td>
-            <td>{{ movie.producer }}</td>
-            <td>{{ movie.releaseDate }}</td>
-            <td>{{ movie.duration }}</td>
-            <td>{{ movie.ageLimited }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+            </div>
+
+          </td>
+          <!-- fin yousra modif-->
+          <td class="d-flex align-items-center flex-column">
+            <p><img src="{{ movie.poster }}" width="100"></p>
+            <button class="btn btn-warning" (click)="handleClickDetailsMovie(movie)">
+              <i>Détails</i>
+            </button>
+          </td>
+          <td>{{ movie.producer }}</td>
+          <td>{{ movie.releaseDate }}</td>
+          <td>{{ movie.duration }}</td>
+          <td>{{ movie.ageLimited }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
+</div>
