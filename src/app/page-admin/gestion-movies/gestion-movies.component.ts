@@ -22,13 +22,10 @@ export class GestionMoviesComponent implements OnInit {
   ageLimited = '';
   age = null;
 
-
-
-
   constructor(private movieWebService: MovieWebService, private http: HttpClient) { }
 
 
-
+  
   ngOnInit(): void {
 
     this.movieWebService.getMovies()
@@ -77,7 +74,6 @@ export class GestionMoviesComponent implements OnInit {
           this.http.get<any>(url).subscribe(
             (data) => {
               this.moviesListApi[i] = data;
-
               
             });
         }
