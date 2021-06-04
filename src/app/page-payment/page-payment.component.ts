@@ -180,8 +180,7 @@ export class PagePaymentComponent implements OnInit {
     doc.text("Rang : "+ this.functionConvertPositionToAlphabet(bookedSeat.placeBookedRow) + " place : " + bookedSeat.placeBookedColumn, 35, 45);
       console.log(this.movieSelected.poster);
 
-    doc.addImage("https://lh3.googleusercontent.com/proxy/QY22Til0mKvOvq-nvCgj1Kh9u-jr93YqOsxsBHNqVdnrOg_O5Rt_9y6o6UmTx23WJchVry-ElXPjoRT5tqsBIJZpEruzm8WcgmpLQEMdg8QpnyU", "JPEG", 55, 100, 80, 80);
-
+      doc.addImage("https://upload.wikimedia.org/wikipedia/commons/7/78/Qrcode_wikipedia_fr_v2clean.png", "JPEG", 55, 100, 80, 80);
      doc.save('pdfsimple.pdf');
   }
 
