@@ -65,16 +65,29 @@ export class MovieWebService {
 
   }
 
-
-  getAllComments(): Observable<MovieComments[]> {
-    return this.http.get<MovieComments[]>(`${this.urlMovies}/comments`);
-  }
- 
   updateSchedules(id:number, movie:Movie): Observable<Movie>{
     console.log(this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie));
     return this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie); 
   }
 
+
+  //---------------------------------------------------------------------------
+
+  // ------------------------- getAllComments --------------------------
+  /**
+   * function getAllComments :
+   * @returns this.http.get<MovieComments[]>(`${this.urlMovies}/comments`);
+   */
+  getAllComments(): Observable<MovieComments[]> {
+    return this.http.get<MovieComments[]>(`${this.urlMovies}/comments`);
+  }
+
+  // ------------------------- addComment --------------------------
+  /**
+   * function addComment :
+   * @param newComment 
+   * @returns this.http.post<MovieComments>(`${this.urlMovies}/comments`, newComment);
+   */
   addComment(newComment: MovieComments): Observable<MovieComments> {
     return this.http.post<MovieComments>(`${this.urlMovies}/comments`, newComment);
 

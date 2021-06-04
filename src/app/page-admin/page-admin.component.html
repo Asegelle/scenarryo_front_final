@@ -17,3 +17,22 @@
   <h3>Home</h3>
 
 
+  
+  <div class="chart-wrapper w-50">
+    <canvas baseChart 
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+  </div>
+
+
+
+  <div *ngFor="let room of roomList; let i = index">
+    <div>{{ room.roomNumber }}</div>
+    <div>{{ room.filmShow.length }}</div>
+        
+  </div>

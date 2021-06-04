@@ -1,16 +1,19 @@
 import { FilmShow } from "./film-show";
 
+// class corresponding to schedules
 export class Schedule {
             
-
+    // --------------------------------------------------------------------------------
+    // Variables
     id?:number;
     showDate?:Date;
     startingHour?:string;
     endingHour?:string;
     filmShow?:FilmShow[];
 
-    //movieShow?:FilmShow[];
-
+    
+    // --------------------------------------------------------------------------------
+    // Constructor
     constructor(id?: number, showDate?:Date, startingHour?:string,endingHour?:string,filmShow?:FilmShow[] ){
         this.id=id;
         this.showDate=showDate;
