@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   showModeratorBoard = false;
   username?: string;
 
+  title:String = '';
+
   constructor(private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
