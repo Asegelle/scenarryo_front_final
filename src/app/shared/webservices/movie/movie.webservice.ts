@@ -73,11 +73,10 @@ export class MovieWebService {
   // ------------------------- getAllComments --------------------------
 
 
-  updateSchedules(id:number, movie:Movie): Observable<Movie>{
-    console.log(this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie));
-    return this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie); 
+  getCommentsById(id:number): Observable<MovieComments[]>{
+    console.log(this.http.get<MovieComments[]>(`${this.urlMovies}/comments/movie/${id}`));
+    return this.http.get<MovieComments[]>(`${this.urlMovies}/comments/movie/${id}`); 
   }
-
 
   /**
    * function getAllComments :

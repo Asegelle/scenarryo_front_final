@@ -48,7 +48,7 @@ class="form-group me-3 p-2 bd-highlight">
     name="comment"
     placeholder="écrivez votre commentaire ici" class="form-control" id="comment" rows="7">
     </textarea>
-    <button class="btn btn-warning">
+    <button class="btn btn-warning mt-3">
         Envoyer
     </button>
 </form>
@@ -58,7 +58,7 @@ class="form-group me-3 p-2 bd-highlight">
 
 <div>
     <div  class="me-3 p-2 bd-highlight"
-    *ngFor="let comment of movie.filmComment; let i = index">
+    *ngFor="let comment of commentsListById; let i = index">
     
         <div
          class="card col-12 ">

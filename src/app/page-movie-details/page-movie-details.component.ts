@@ -26,6 +26,8 @@ export class PageMovieDetailsComponent implements OnInit {
   idMovie: number = 0;
   sub:any;
   commentsList: MovieComments[] = [];
+  commentsListById: MovieComments[] = [];
+
   emptyComment: MovieComments = new MovieComments();
   submitted:boolean = false;
 
@@ -52,9 +54,20 @@ export class PageMovieDetailsComponent implements OnInit {
   }
 
 
+  
+  getAllCommentsById(){
+    this.movieWebService.getCommentsById(this.idMovie)
+    .subscribe(data => {
+      this.commentsListById = data;
+      console.log(this.commentsListById);
+    });
+  }
+
+
   newComment(): void {
     this.comment = {
-      comment:""
+      comment:"",
+      commentMovie:undefined
     };
   }
 
@@ -74,6 +87,7 @@ export class PageMovieDetailsComponent implements OnInit {
         });
 
     this.getAllComments();
+    this.getAllCommentsById();
 
   }
 
@@ -85,14 +99,17 @@ export class PageMovieDetailsComponent implements OnInit {
   onSubmitAddComment():void{
     this.emptyComment = {
       comment:this.comment.comment,
-      commentMovie:this.comment.commentMovie
+      commentMovie:this.movie
     };
     this.movieWebService.addComment(this.emptyComment)
     .subscribe(response => {
       console.log(response);
       this.submitted=true;
       this.getAllComments();
+      this.getAllCommentsById();
+
       this.newComment();
+      this.ngOnInit();
     },
     error => {
       console.log(error);
