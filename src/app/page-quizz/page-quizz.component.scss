@@ -2,20 +2,95 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: thistle;
-    width: 50%;
+    //background-color: thistle;
+    width: 47%;
     height: 500px;
     padding: 2%;
-    border-radius: 30%;
+    border-radius: 5%;
+    position: relative;
+    margin-bottom: 30px;
+    padding-top: 0px;
+}
+
+.app-image-HP{
+    opacity: 0.3;
+    position: relative;
+    width: 930px;
+    border-radius: 15px;
+    box-shadow: 5px 5px 5px black;
+}
+
+.app-text-HP{
+    position: absolute;
+    padding-top: 20px;
+    width: 700px;
+}
+
+.app-start-button{
+    width: 300px;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px rgb(95, 70, 0);
+}
+
+.app-answer-button{
+    width: 300px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.app-start-button:hover{
+    background-color: rgb(255, 241, 110);
+}
+
+.app-start-button:active{
+    transform: translateX(3px);
+    transform: translateY(3px);
+    box-shadow: 0px 0px 0px rgb(95, 70, 0);
+
 }
 
 .contenant {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    //background-color: black;
+    //opacity: 0.5;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    height: 450px;
+
 }
 
+
+.app-container-questions{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    //background-color: black;
+    //opacity: 0.5;
+    padding-bottom: 20px;
+    height: 470px;
+}
+.app-container-questions__background{
+    opacity: 0.9;
+    position: relative;
+    z-index: -1;
+    width: 700px;
+    height: 540px;
+    background-color: black;
+    border-radius: 15px;
+    //box-shadow: 5px 5px 5px black;
+}
+.app-container-questions__text{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    color: white;
+}
 // .quizz {
 //     background-image: url("../../assets/quizzHarryPotter.jpg");
 //     background-size: contain;
@@ -36,17 +111,24 @@
     width: 70%;
 }
 
+/*
 button {
     margin: 1%;
     height: 20%;
     width: 55%;
     border: 2px solid black; 
     border-radius: 15%;
+}*/
+
+.app-question-title{
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .question {
     font-size: 150%;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .score {
@@ -74,9 +156,7 @@ button {
 .btnPlayAgain {
     height: 20%;
     width: 55%;
-    margin-left: 40%;
-    background-color: black;
-    color: white;
+    font-weight: bold;
 }
 
 .app-banner-image {

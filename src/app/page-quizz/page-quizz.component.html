@@ -1,64 +1,88 @@
 <section class="quizz">
 
-    <div class="d-flex justify-content-center mt-3 mb-3">
+  <div class="d-flex justify-content-center mt-3 mb-3">
     <div class="p-4 pe-5 ps-5 ms-5 me-5 text-center bg-image mt-3 app-banner-image"
-    style="background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1cccbcdd-92bd-44d6-b5f6-d7959eddf41b/d3jcvxa-c2b65d35-e3fe-46ce-bf06-9a3cf4fa56f4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFjY2NiY2RkLTkyYmQtNDRkNi1iNWY2LWQ3OTU5ZWRkZjQxYlwvZDNqY3Z4YS1jMmI2NWQzNS1lM2ZlLTQ2Y2UtYmYwNi05YTNjZjRmYTU2ZjQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gKIHpQpi3MDTaTYvMJiG4biL5Db1MWk3FLgc0kGqo-E)">
-        <div class="mask app-background-quizz">
-          <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white">
-              <div class="d-flex justify-content-center mt-3 mb-3">
-                <div>
-                  <h1 class="app-title">Quizz Harry Potter</h1>
-                </div>
+      style="background-image:url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/1cccbcdd-92bd-44d6-b5f6-d7959eddf41b/d3jcvxa-c2b65d35-e3fe-46ce-bf06-9a3cf4fa56f4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzFjY2NiY2RkLTkyYmQtNDRkNi1iNWY2LWQ3OTU5ZWRkZjQxYlwvZDNqY3Z4YS1jMmI2NWQzNS1lM2ZlLTQ2Y2UtYmYwNi05YTNjZjRmYTU2ZjQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.gKIHpQpi3MDTaTYvMJiG4biL5Db1MWk3FLgc0kGqo-E)">
+      <div class="mask app-background-quizz">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <div class="d-flex justify-content-center mt-3 mb-3">
+              <div>
+                <h1 class="app-title">Quizz Harry Potter</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <div class="container">
-        <!-- gestion de la 1ere page du quizz -->
-        <div *ngIf="accueilQuizz===0" class="accueilQuizz">
-            <h2>Quizz Harry Potter</h2>
-            <!-- <img src="assets/quizzHarryPotter.jpg" class="imgQuizzPotter" /> -->
-            <button class="btnStartQuizz" (click)="handleClickStartQuizz()" >COMMENCER LE QUIZZ</button>
-        </div>
-            
-        <!-- affichage questions et réponses -->
-        <div *ngIf="accueilQuizz != 0" class="contenant">
-            <h2 *ngIf="indexQuestion != 10">Question {{ numberOfQuestion }} </h2> 
-
-
-            <p class="question"> {{ questionList[0] }} </p>
-
-                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(0)" > {{ responseList[0] }} </button>
-                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(1)"> {{ responseList[1] }} </button>
-                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(2)"> {{ responseList[2] }} </button>
-                <button *ngIf="indexQuestion != 10" (click)="handleClickResponseQuizz(3)"> {{ responseList[3] }} </button>
-
-                <!-- gestion de la dernière page du Quizz -->
-                <div class="score" *ngIf="indexQuestion === 10">
-                    <p>Votre score est de : {{score}}/10</p>
-
-                    <p *ngIf="score === 10">BRAVO, vous avez gagné une place de cinéma.</p>
-                    <p *ngIf="score === 10">Vous recevrez votre place par email</p>
-                    
-                </div>
-                
-                <!-- TODO btnQuestion suivante -->
-            <!-- <button *ngIf="indexQuestion != 10" class="btnQuestionSuivante">Question suivante >></button> -->
-
-            
-            <button *ngIf="indexQuestion === 10" class="btnPlayAgain" (click)="handleClickNextBtn()">Rejouer</button>
-        </div>
+  <div class="container">
+    <div>
+      <img class="app-image-HP"
+        src="https://static2.srcdn.com/wordpress/wp-content/uploads/2019/12/classic-sitcom-hogwarts-houses-header-Cropped.png"
+        alt="">
     </div>
+    <div class="app-text-HP">
+
+      <!-- gestion de la 1ere page du quizz -->
+      <div *ngIf="accueilQuizz===0" class="accueilQuizz">
+
+        <!-- <img src="assets/quizzHarryPotter.jpg" class="imgQuizzPotter" /> -->
+        <button class="btn btn-warning btn-lg btn-block app-start-button" (click)="handleClickStartQuizz()">Commencer le
+          Quizz</button>
+      </div>
+
+      <!-- affichage questions et réponses -->
+      <div *ngIf="accueilQuizz != 0" class="contenant">
+
+        <div class="app-container-questions">
+          <div class="app-container-questions__text">
+            <h2 class="app-question-title" *ngIf="indexQuestion != 10">Question {{ numberOfQuestion }} </h2>
+
+
+            <p class="question mt-3"> {{ questionList[0] }} </p>
     
-    <!--
+            <button class="btn btn-danger mb-3 app-answer-button" *ngIf="indexQuestion != 10"
+              (click)="handleClickResponseQuizz(0)"> {{ responseList[0] }} </button>
+            <button class="btn btn-success mb-3 app-answer-button" *ngIf="indexQuestion != 10"
+              (click)="handleClickResponseQuizz(1)"> {{ responseList[1] }} </button>
+            <button class="btn btn-warning mb-3 app-answer-button" *ngIf="indexQuestion != 10"
+              (click)="handleClickResponseQuizz(2)"> {{ responseList[2] }} </button>
+            <button class="btn btn-primary mb-3 app-answer-button" *ngIf="indexQuestion != 10"
+              (click)="handleClickResponseQuizz(3)"> {{ responseList[3] }} </button>
+    
+            <!-- gestion de la dernière page du Quizz -->
+            <div class="score" *ngIf="indexQuestion === 10">
+              <p>Votre score est de : {{score}}/10</p>
+    
+              <p *ngIf="score === 10">BRAVO, vous avez gagné une place de cinéma.</p>
+              <p *ngIf="score === 10">Vous recevrez votre place par email</p>
+    
+            </div>
+    
+            <!-- TODO btnQuestion suivante -->
+            <!-- <button *ngIf="indexQuestion != 10" class="btnQuestionSuivante">Question suivante >></button> -->
+    
+    
+            <button *ngIf="indexQuestion === 10" class="btn btn-warning btnPlayAgain mt-3" (click)="handleClickNextBtn()">Rejouer</button>
+          </div>
+          <div class="app-container-questions__background"></div>
+        </div>
+
+
+        
+      </div>
+
+    </div>
+
+  </div>
+
+  <!--
     <div>
         <img class="potter" src="assets/potter.jpg" alt="Harry Potter">
     </div>
      -->
-     
+
 </section>
