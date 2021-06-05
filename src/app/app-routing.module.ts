@@ -44,6 +44,7 @@ const routes: Routes = [
   {path:'mod', component: BoardModeratorComponent },
   {path:'admin', component: BoardAdminComponent }
 
+
 ];
 
 
