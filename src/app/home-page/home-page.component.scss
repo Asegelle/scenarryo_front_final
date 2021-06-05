@@ -5,6 +5,8 @@
     font-style: italic;
 }
 
+
+
 .app-banner-image{
     height: 400px;
     margin-top: 58px;
@@ -16,6 +18,23 @@
 
 .card-text{
     height: 100px;
+}
+
+.app-age-warning{
+    background-color: rgb(255, 208, 0);
+    height: 30px;
+    padding-top: 1px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px rgb(73, 54, 0);
+    margin-bottom: 5px;
+}
+
+.app-age-null{
+    height: 30px;
+    padding-top: 1px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px;
+    margin-bottom: 5px;
 }
 
 .app-card-movie{
@@ -49,6 +68,7 @@
 .card-title { // box titre
     font-size: 15px;
     font-weight: bold;
+    height: 50px;
 }
 
 .card-img { // box poster du film
@@ -62,6 +82,8 @@
 
 .app-card {
     padding-bottom: 10px;
+    height: 470px;
+
 }
 
 .btn { // box bouton lien vers détails

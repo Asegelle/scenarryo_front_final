@@ -22,7 +22,45 @@
                             <article class="mb-2"> Durée : {{ movie.duration }}</article>
                             <button (click)="handleClickDisplaySchedule()" class="btn btn-secondary">
                                 <i>Horaires</i>
-                              </button>
+                            </button>
+
+                            <div [hidden]="isHidden">
+
+                                <div class="card my-5 card-body">
+                                  <table class="table table-bordered table-striped">
+                                    <thead class="bg-warning">
+                                      <tr>
+                                        <th *ngFor="let dateDisplayed of arrayDates"> {{ dateDisplayed | date:'MM-dd' }}</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                  
+                                      <tr *ngFor="let showOfThisMovie of movie.filmShow">
+                                        <td *ngFor="let dateDisplayed of arrayDates">
+                                          <span
+                                            *ngIf="(showOfThisMovie.showSchedule.showDate | date:'MM-dd') == (dateDisplayed| date:'MM-dd' ); else elseBlock">
+                                            <button class="btn btn-danger"
+                                              (click)="handleClickBooking(showOfThisMovie,movie)"><i>{{showOfThisMovie.showSchedule.startingHour}}</i>
+                                            </button>
+                                            {{showOfThisMovie.bookedSeats}}
+                                          </span>
+                                        </td>
+                                      </tr>
+                                      <ng-template #elseBlock>
+                                        <td></td>
+                                      </ng-template>
+                  
+                  
+                  
+                                    </tbody>
+                                  </table>
+                                </div>
+                  
+                  
+                  
+                              </div>
+
+
                         </div>
                     </div>
 

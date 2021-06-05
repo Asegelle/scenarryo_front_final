@@ -40,7 +40,6 @@ export class HomePageComponent implements OnInit {
     );
   }
   
-  
 
 
   handleClickDetailsMovie(movie:Movie){

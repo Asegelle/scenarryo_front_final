@@ -29,6 +29,14 @@
     -webkit-box-orient: vertical;
     text-align: justify;
 }
-  .app-banner-image {
-    background-color: rgb(255, 187, 0);
-  }
+
+.app-banner-image {
+  background-color: rgb(255, 187, 0);
+  box-shadow: 3px 3px 3px rgb(83, 61, 0);
+
+}
+
+.mask{
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 3px 3px 3px rgb(49, 36, 0);
+}

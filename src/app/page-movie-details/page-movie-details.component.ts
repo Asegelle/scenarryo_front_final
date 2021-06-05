@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { FilmShow } from '../shared/models/film-show';
 import { Movie } from '../shared/models/movie/movie';
 import { MovieComments } from '../shared/models/movieComments';
+import { Schedule } from '../shared/models/schedule';
 import { MovieWebService } from '../shared/webservices/movie/movie.webservice';
 
 @Component({
@@ -30,15 +33,18 @@ export class PageMovieDetailsComponent implements OnInit {
 
   emptyComment: MovieComments = new MovieComments();
   submitted:boolean = false;
+  arrayDates: Date[] = [];
 
   comment:MovieComments = {
     comment:""
   }
 
+  moviesList: Movie[] = [];
+  showes: FilmShow[] = [];
+  schedules: Schedule[] = [];
 
 
-
-  constructor(private activatedroute:ActivatedRoute, private movieWebService: MovieWebService) {
+  constructor(private activatedroute:ActivatedRoute, private movieWebService: MovieWebService, private router: Router) {
     this.activatedroute.queryParams.subscribe(
       params => {
         this.idMovie = Number(params.idMovie);
@@ -89,8 +95,36 @@ export class PageMovieDetailsComponent implements OnInit {
     this.getAllComments();
     this.getAllCommentsById();
 
+
+    this.arrayDates.push(new Date());
+    for (let i = 1 ;  i <= 6 ; i++) {
+      this.arrayDates.push(new Date(new Date().setDate(new Date().getDate()+i)) );
+      
+    }
+
   }
 
+
+  handleClickBooking(show : FilmShow, movie : Movie){
+    let queryNavigation : NavigationExtras = {
+      queryParams : {
+        idShow : show.id,
+        idMovie : movie.id
+      }
+    }
+    if (show.bookedSeats!=undefined && show.showRoom?.seatsQuantity !=undefined
+        && show.bookedSeats < show.showRoom?.seatsQuantity) {
+      // this.filmShowService.updateFilmShow(show);
+      this.router.navigate(['page-payment'],queryNavigation);
+      
+    } else {
+      alert('aucune place n\'est disponible');
+    }
+      
+  }
+  onSubmit(form: NgForm) {
+    console.log(form.value['title']);
+  }
 
 
 
@@ -116,9 +150,9 @@ export class PageMovieDetailsComponent implements OnInit {
     });
   }
 
-
+  isHidden:boolean = true;
   handleClickDisplaySchedule(){
-
+    this.isHidden=!this.isHidden;
   }
 
 
