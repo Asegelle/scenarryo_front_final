@@ -139,6 +139,10 @@ export class GestionMoviesComponent implements OnInit {
       });
   }
 
+
+handleClickAddMovieByForm(movieForm: any): void {
+  console.log(movieForm);
+}
 }
 
 

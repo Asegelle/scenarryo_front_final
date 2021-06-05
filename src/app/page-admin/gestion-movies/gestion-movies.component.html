@@ -60,6 +60,8 @@
           <th scope="col">Limite d'âge</th>
           <th scope="col">Action</th>
 
+
+          <!-- Affichage des films en BDD et bouton supprimer -->
         </tr>
       </thead>
       <tbody>
@@ -83,6 +85,7 @@
   </div>
 </div>
 
+<!-- Saisie d'un titre pour recherche dans l'API -->
 
 <h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film </h3>
 <div class="card my-5 col-5">
@@ -104,7 +107,7 @@
     </div>
   </div>
 
-
+<!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
 
 <div class="card my-5">
   <div class="card-body">
@@ -152,3 +155,33 @@
   </form>
   </div>
 </div>
+
+<!-- Formulaire pour Ajouter un film champs par champs -->
+
+<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film </h3>
+<div class="card my-5 col-5">
+  <div class="card-body">
+
+      <form #addMovieForm="ngForm" (ngSubmit)="handleClickAddMovieByForm(addMovieForm)" class="ms-3">
+
+        <div class="form-group">
+      
+          <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title" ngModel>
+      
+        </div>
+        <div class="form-group">
+      
+          <input type="text" placeholder="Producteur" id="producer" class="form-control" name="producer" ngModel>
+      
+        </div>
+
+
+
+        <button type="submit" class="btn btn-warning mt-3">
+          <i class="fa fa-search"></i>
+        </button>
+      
+      </form>
+      
+    </div>
+  </div>
