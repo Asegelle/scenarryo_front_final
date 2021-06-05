@@ -3,6 +3,7 @@ import { MovieWebService } from '../shared/webservices/movie/movie.webservice';
 import { Movie } from '../shared/models/movie/movie';
 import { NgForm } from '@angular/forms';
 import { UserService } from '../shared/webservices/login-signup/user.service';
+import { NavigationExtras, Router } from '@angular/router';
 
 
 
@@ -16,7 +17,7 @@ export class HomePageComponent implements OnInit {
   content?: string;
   moviesList: Movie[] = [];
 
-  constructor(private movieWebService: MovieWebService,private userService: UserService) {
+  constructor(private movieWebService: MovieWebService,private userService: UserService,  private router: Router) {
 
   }
 
@@ -40,6 +41,19 @@ export class HomePageComponent implements OnInit {
   }
   
   
+
+
+  handleClickDetailsMovie(movie:Movie){
+    let queryNavigation : NavigationExtras = {
+      queryParams : {
+        idMovie : movie.id
+      }
+    }
+    console.log("movie.id",movie.id);
+    this.router.navigate(['/page-movie-details'],queryNavigation);
+
+
+}
   
 
   onDestroy() {
