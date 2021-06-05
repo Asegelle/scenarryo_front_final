@@ -1,53 +1,56 @@
 <div class="p-4 pe-5 ps-5 ms-5 me-5 text-center bg-image mt-3 app-banner-image">
-	<div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-	  <div class="d-flex justify-content-center align-items-center h-100">
-		<div class="text-white">
-		  <div class="d-flex justify-content-center mt-3 mb-3">
-			<div>
-			  <h1 class="app-title">Gestion Administrateur</h1>
-			</div>
-		  </div>
-		</div>
-	  </div>
-	</div>
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center h-100">
+      <div class="text-white">
+        <div class="d-flex justify-content-center mt-3 mb-3">
+          <div>
+            <h1 class="app-title">Gestion Administrateur</h1>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  
-	<!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ms-5 me-5">
-	<div class="container">
-	  <a class="navbar-brand text-warning" href="#">Administrateur</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-	  <div class="collapse navbar-collapse" id="navbarResponsive">
-		<ul class="navbar-nav ml-auto">
-		  <li class="nav-item active">
-			<a class="nav-link" [routerLink]="['/page-admin']">Overview
-				  <span class="sr-only">(current)</span>
-				</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" [routerLink]="['/gestion-movies']">Films</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" [routerLink]="['/gestion-rooms']">Salles</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" [routerLink]="['/gestion-schedules']">Horaires</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" [routerLink]="['/gestion-film-showes']">Séances</a>
-		  </li>
-		</ul>
-	  </div>
-	</div>
-  </nav>
+</div>
 
 
-  <h3 class="mt-5 ms-4">Gestion des films </h3>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ms-5 me-5">
+  <div class="container">
+    <a class="navbar-brand text-warning" href="#">Administrateur</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/page-admin']">Overview
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-movies']">Films</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-rooms']">Salles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-schedules']">Horaires</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/gestion-film-showes']">Séances</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
+<h3 class="mt-5 ms-4">Gestion des films </h3>
+
+
+          <!-- Affichage des films en BDD et bouton supprimer -->
+          
 <div class="card my-5">
   <div class="card-body">
     <table class="table table-bordered table-striped">
@@ -61,7 +64,6 @@
           <th scope="col">Action</th>
 
 
-          <!-- Affichage des films en BDD et bouton supprimer -->
         </tr>
       </thead>
       <tbody>
@@ -72,10 +74,13 @@
           <td>{{ movie.duration }}</td>
           <td>{{ movie.ageLimited }}</td>
           <td>
-            <button  (click)="handleClickDeleteMovie(movie)" class="btn btn-danger">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            <button (click)="handleClickDeleteMovie(movie)" class="btn btn-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                <path fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
               </svg>
             </button>
           </td>
@@ -87,101 +92,124 @@
 
 <!-- Saisie d'un titre pour recherche dans l'API -->
 
-<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film </h3>
+<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film à l'aide de la bibliothèque</h3>
 <div class="card my-5 col-5">
   <div class="card-body">
 
-      <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)" class="ms-3">
+    <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)" class="ms-3">
 
-        <div class="form-group">
-      
-          <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title" [(ngModel)]="title">
-      
-        </div>
-        <button type="submit" class="btn btn-warning mt-3">
-          <i class="fa fa-search"></i>
-        </button>
-      
-      </form>
-      
-    </div>
+      <div class="form-group">
+
+        <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title" [(ngModel)]="title">
+
+      </div>
+      <button type="submit" class="btn btn-warning mt-3">
+        <i class="fa fa-search"></i>
+      </button>
+
+    </form>
+
   </div>
+</div>
 
 <!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
 
 <div class="card my-5">
   <div class="card-body">
     <form>
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark">
-        <tr>
-          <th scope="col">Titre</th>
-          <th scope="col">Poster</th>
-          <th scope="col">Date de sortie</th>
-          <th scope="col">Durée</th>
-          <th scope="col">Synospis</th>
-          <th scope="col">Réalisateur</th>
-          <th scope="col">Note</th>
-          <th scope="col">Limite d'âge</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let movieApi of moviesListApi; let i = index">
-          <td>{{ movieApi.Title }}</td>
-          <td><img src="{{ movieApi.Poster }}" width="100"></td>
-          <td>{{ movieApi.Released }}</td>
-          <td>{{ movieApi.Runtime }}</td>
-          <td>{{ movieApi.Plot }}</td>
-          <td>{{ movieApi.Director }}</td>
-          <td>{{ movieApi.imdbRating }}</td>
-          
-          <td>
-            <select ([ngModel])="ageLimit" >
-              <!-- rajouter un champs vide sinon -->
-              <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index" [ngValue]="ageLimited"  > {{ageLimited}} </option>
-              
-            </select>
-          </td>
-          
+      <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Titre</th>
+            <th scope="col">Poster</th>
+            <th scope="col">Date de sortie</th>
+            <th scope="col">Durée</th>
+            <th scope="col">Synospis</th>
+            <th scope="col">Réalisateur</th>
+            <th scope="col">Note</th>
+            <th scope="col">Limite d'âge</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movieApi of moviesListApi; let i = index">
+            <td>{{ movieApi.Title }}</td>
+            <td><img src="{{ movieApi.Poster }}" width="100"></td>
+            <td>{{ movieApi.Released }}</td>
+            <td>{{ movieApi.Runtime }}</td>
+            <td>{{ movieApi.Plot }}</td>
+            <td>{{ movieApi.Director }}</td>
+            <td>{{ movieApi.imdbRating }}</td>
 
-          <td>
-            <button  (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
-              <i class="fa fa-plus"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+            <td>
+              <select ([ngModel])="ageLimit">
+                <!-- rajouter un champs vide sinon -->
+                <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
+                  [ngValue]="ageLimited"> {{ageLimited}} </option>
+
+              </select>
+            </td>
+
+
+            <td>
+              <button (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
+                <i class="fa fa-plus"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 </div>
 
 <!-- Formulaire pour Ajouter un film champs par champs -->
 
-<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film </h3>
+<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film avec le Formulaire</h3>
+
 <div class="card my-5 col-5">
   <div class="card-body">
 
-      <form #addMovieForm="ngForm" (ngSubmit)="handleClickAddMovieByForm(addMovieForm)" class="ms-3">
+    <form #addMovieForm="ngForm" (ngSubmit)="handleClickAddMovieByForm(addMovieForm)" class="ms-3">
 
-        <div class="form-group">
-      
-          <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title" ngModel>
-      
-        </div>
-        <div class="form-group">
-      
-          <input type="text" placeholder="Producteur" id="producer" class="form-control" name="producer" ngModel>
-      
-        </div>
+      <div class="form-group">
 
+        <label for="title">Titre du film</label>
+        <input type="text" id="title" name="title" class="form-control" ngModel>
 
+        <label for="producer">Producteur</label>
+        <input type="text" id="producer" name="producer" class="form-control" ngModel>
 
-        <button type="submit" class="btn btn-warning mt-3">
-          <i class="fa fa-search"></i>
+        <label for="releaseDate">Date de sortie</label>
+        <input type="text" id="releaseDate" name="releaseDate" class="form-control" ngModel>
+
+       
+
+        <label for="synopsys">Synopsys</label>
+        <input type="text" ngModel id="synopsys" name="synopsys" class="form-control">
+
+        <label for="duration">Durée du film</label>
+        <input type="text" ngModel id="duration" name="duration" class="form-control">
+      <br>
+        <label for="ageLimit">Âge Limite</label>
+        <br>
+        <select name="ageLimit" ([ngModel])="ageLimit">
+          <!-- rajouter un champs vide sinon -->
+          <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
+            [ngValue]="ageLimited"> {{ageLimited}} </option>
+        </select>
+        <br><br>
+
+        <label for="poster">Téléchargez une affiche</label>
+        <br>
+        <input type="file" class="form-control-file" id="poster">
+        <br>
+        <button type="submit" class="btn btn-primary mt-3">
+          <i class="fa fa-plus"></i>
         </button>
-      
-      </form>
-      
-    </div>
+        <br>
+      </div>
+    </form>
+
   </div>
+</div>

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm, NgModel } from '@angular/forms';
+
 import { Movie } from 'src/app/shared/models/movie/movie';
 import { MovieWebService } from 'src/app/shared/webservices/movie/movie.webservice';
 
@@ -21,6 +22,7 @@ export class GestionMoviesComponent implements OnInit {
   ageLimit = null;
   ageLimited = '';
   age = null;
+
 
   constructor(private movieWebService: MovieWebService, private http: HttpClient) { }
 
@@ -140,10 +142,26 @@ export class GestionMoviesComponent implements OnInit {
   }
 
 
-handleClickAddMovieByForm(movieForm: any): void {
-  console.log(movieForm);
+handleClickAddMovieByForm(addMovieForm: NgForm){
+
+  this.movie.title = addMovieForm.value['title'];
+  this.movie.producer = addMovieForm.value['producer'];
+  this.movie.releaseDate = addMovieForm.value['releaseDate'];
+  this.movie.synopsis = addMovieForm.value['synopsis'];
+  this.movie.duration = addMovieForm.value['duration'];
+  this.movie.poster = addMovieForm.value['poster'];
+
+  this.movieWebService.addMovieService(this.movie).subscribe(
+    (data: Movie) => {
+      data = this.movie;
+
+      // refresh components after click
+      this.ngOnInit();
+     
+
+    });
 }
+
+
+
 }
-
-
-
