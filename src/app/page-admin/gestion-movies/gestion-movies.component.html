@@ -113,7 +113,7 @@
       <tbody>
         <tr *ngFor="let movieCaroussel of moviesListCaroussel; let i = index">
           <td>{{ movieCaroussel.title }}</td>
-            <!-- <img width="100" src="{{ movieCaroussel.producer }}" alt="Affiche du film "> -->
+          <!-- <img width="100" src="{{ movieCaroussel.producer }}" alt="Affiche du film "> -->
           <td>
             <button (click)="handleClickDeleteMovieCaroussel(movieCaroussel )" class="btn btn-danger">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
@@ -159,7 +159,7 @@
   <div class="card my-5 col-5">
     <div class="card-body">
 
-      <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie) ; this.isButtonVisibleDetailMovieApi = false" class="ms-3">
+      <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie , this.isButtonVisibleShowTable = true)" class="ms-3">
 
         <div class="form-group">
 
@@ -176,67 +176,72 @@
     </div>
   </div>
 
-  <!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
-  <button *ngIf="this.isButtonVisibleShowButtonDetail" (click)="this.isButtonVisibleShowButtonDetail = false ; this.isButtonVisibleHideButtonDetail = true ;this.isButtonVisibleDetailMovieApi = true " 
-  class="btn btn-primary mt-2 mb-2">
+  <div *ngIf="this.isButtonVisibleShowTable">
+    <!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
+    <button *ngIf="this.isButtonVisibleShowButtonDetail"
+      (click)="this.isButtonVisibleShowButtonDetail = false ; this.isButtonVisibleHideButtonDetail = true ;this.isButtonVisibleDetailMovieApi = true "
+      class="btn btn-primary mt-2 mb-2">
 
-  <i class="fa fa-search"></i> Afficher plus de détail pour votre recherche
-</button>
-<button *ngIf="this.isButtonVisibleHideButtonDetail" (click)="this.isButtonVisibleHideButtonDetail = false ; this.isButtonVisibleShowButtonDetail = true ; this.isButtonVisibleDetailMovieApi = false" 
-  class="btn btn-warning mt-2 mb-2">
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16">
-    <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
-  </svg> Ne plus afficher les détails
-</button>
-  <div class="card my-5">
-    <div class="card-body">
-      <form>
-        <table class="table table-bordered table-striped">
-          <thead class="table-dark">
-            <tr>
-              <th scope="col">Titre</th>
-              <th scope="col">Poster</th>
-              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Date de sortie</th>
-              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Durée</th>
-              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Synospis</th>
-              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Réalisateur</th>
-              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Note</th>
-              <th scope="col">Limite d'âge</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let movieApi of moviesListApi; let i = index">
-              <td>{{ movieApi.Title }}</td>
-              <td><img src="{{ movieApi.Poster }}" width="100"></td>
+      <i class="fa fa-search"></i> Afficher plus de détail pour votre recherche
+    </button>
+    <button *ngIf="this.isButtonVisibleHideButtonDetail"
+      (click)="this.isButtonVisibleHideButtonDetail = false ; this.isButtonVisibleShowButtonDetail = true ; this.isButtonVisibleDetailMovieApi = false"
+      class="btn btn-warning mt-2 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace-fill"
+        viewBox="0 0 16 16">
+        <path
+          d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z" />
+      </svg> Ne plus afficher les détails
+    </button>
+    <div class="card my-5">
+      <div class="card-body">
+        <form>
+          <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+              <tr>
+                <th scope="col">Titre</th>
+                <th scope="col">Poster</th>
+                <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Date de sortie</th>
+                <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Durée</th>
+                <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Synospis</th>
+                <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Réalisateur</th>
+                <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Note</th>
+                <th scope="col">Limite d'âge</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movieApi of moviesListApi; let i = index">
+                <td>{{ movieApi.Title }}</td>
+                <td><img src="{{ movieApi.Poster }}" width="100"></td>
 
-              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Released }}</td>
-              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Runtime }}</td>
-              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Plot }}</td>
-              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Director }}</td>
-              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.imdbRating }}</td>
+                <td *ngIf="this.isButtonVisibleDetailMovieApi">{{ movieApi.Released }}</td>
+                <td *ngIf="this.isButtonVisibleDetailMovieApi">{{ movieApi.Runtime }}</td>
+                <td *ngIf="this.isButtonVisibleDetailMovieApi">{{ movieApi.Plot }}</td>
+                <td *ngIf="this.isButtonVisibleDetailMovieApi">{{ movieApi.Director }}</td>
+                <td *ngIf="this.isButtonVisibleDetailMovieApi">{{ movieApi.imdbRating }}</td>
 
-              <td>
-                <select ([ngModel])="ageLimit">
-                  <!-- rajouter un champs vide sinon -->
-                  <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
-                    [ngValue]="ageLimited"> {{ageLimited}} </option>
+                <td>
+                  <select ([ngModel])="ageLimit">
+                    <!-- rajouter un champs vide sinon -->
+                    <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
+                      [ngValue]="ageLimited"> {{ageLimited}} </option>
 
-                </select>
-              </td>
-              <td>
-                <button (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
+                  </select>
+                </td>
+                <td>
+                  <button (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
+                    <i class="fa fa-plus"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-
 
 <!-- Formulaire pour Ajouter un film champs par champs -->
 

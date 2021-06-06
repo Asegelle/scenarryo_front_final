@@ -28,6 +28,7 @@ export class GestionMoviesComponent implements OnInit {
   isButtonVisibleDetailMovieApi:boolean = false; //valeur false rends invisble
   isButtonVisibleHideButtonDetail:boolean = false; //valeur false rends invisble
   isButtonVisibleShowButtonDetail:boolean = true;
+  isButtonVisibleShowTable:boolean = false;
 
 
   constructor(private movieWebService: MovieWebService, private http: HttpClient) { }
