@@ -27,7 +27,7 @@ export class GestionRoomsComponent implements OnInit {
     },
     error => {
       console.log(error);
-      alert('Cette salle contient des SÉANCE(S) planifiée(s), impossible de la supprimée');
+      alert('Cette salle contient des SÉANCE(S) planifiée(s), impossible de la supprimer');
     });
   }
   @ViewChild('seatsQuantity') elementSeat! : ElementRef;
@@ -68,7 +68,7 @@ export class GestionRoomsComponent implements OnInit {
     } 
     else {
       this.elementSeat.nativeElement.focus();
-      alert('le nombre de total de place n\'est pas en adéquation avec nombre de rang ');
+      alert('le nombre total de place n\'est pas en adéquation avec le nombre de rang ');
       
     }
   }
