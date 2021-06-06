@@ -38,6 +38,7 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import  localeFrExtra  from '@angular/common/locales/extra/fr';
 import { BookedSeatsService } from './shared/webservices/booked-seats/booked-seats.service';
+import { BanniereComponent } from './banniere/banniere.component';
 
 registerLocaleData(localeFr,'fr-FR',localeFrExtra);
 
@@ -64,7 +65,8 @@ registerLocaleData(localeFr,'fr-FR',localeFrExtra);
     BoardModeratorComponent,
     PagePaymentComponent,
     TermsOfUseComponent,
-    PageQuizzComponent
+    PageQuizzComponent,
+    BanniereComponent
   ],
   imports: [
     BrowserModule,

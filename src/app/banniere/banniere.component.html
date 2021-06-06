@@ -1,0 +1,25 @@
+<div class="container">
+
+    <!-- <div *ngFor="let movie of moviesList; let i = index" class="contenant"> -->
+        
+        <div [ngClass]="'poster-container'" >
+            <!-- <div class="card-img" > -->
+                <img [ngStyle]="{'margin-left': marginleftP}" *ngFor="let movie of moviesList; let i = index" class="poster" [ngClass]="handleGetPosterClass(i)" src="{{ movie.poster }}" alt="Film à l'affiche ">           
+                <!-- </div> -->
+            <!-- [ngStyle]="{'height': zoomPx}" -->
+        </div>
+        <button class="btnPrecedent" (click)="handleClickBtnPrecedent()" > < </button>
+        <button class="btnSuivant" (click)="handleClickBtnSuivant()"> > </button>
+    <!-- </div> -->
+    <div class="linkPoster">
+        <button (click)="btnPoster0()" class="linkclass linkPoster0"></button>
+        <button (click)="btnPoster1()" class="linkclass linkPoster1"></button>
+        <button (click)="btnPoster2()" class="linkclass linkPoster2"></button>
+        <button (click)="btnPoster3()" class="linkclass linkPoster3"></button>
+        <button (click)="btnPoster4()" class="linkclass linkPoster4"></button>
+        <button (click)="btnPoster5()" class="linkclass linkPoster5"></button>
+        <button (click)="btnPoster6()" class="linkclass linkPoster6"></button>
+        <button (click)="btnPoster7()" class="linkclass linkPoster7"></button>
+        <button (click)="btnPoster8()" class="linkclass linkPoster8"></button>
+    </div>
+</div>
