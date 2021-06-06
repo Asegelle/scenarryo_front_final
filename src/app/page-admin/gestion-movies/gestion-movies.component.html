@@ -49,8 +49,8 @@
 <h3 class="mt-5 ms-4">Gestion des films </h3>
 
 
-          <!-- Affichage des films en BDD et bouton supprimer -->
-          
+<!-- Affichage des films en BDD et bouton supprimer -->
+
 <div class="card my-5">
   <div class="card-body">
     <table class="table table-bordered table-striped">
@@ -61,7 +61,8 @@
           <th scope="col">Date de sortie</th>
           <th scope="col">Durée</th>
           <th scope="col">Limite d'âge</th>
-          <th scope="col">Action</th>
+          <th scope="col">Supprimer</th>
+          <th scope="col">Bannière</th>
 
 
         </tr>
@@ -84,132 +85,209 @@
               </svg>
             </button>
           </td>
+          <td>
+            <button (click)="handleClickAddMovieCaroussel(movie)" class="btn btn-primary">
+              <i class="fa fa-plus"></i>
+            </button>
+          </td>
+          <td>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
 
-<!-- Saisie d'un titre pour recherche dans l'API -->
+<!-- Affichage des films évenements ajout et bouton supprimer -->
 
-<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film à l'aide de la bibliothèque</h3>
-<div class="card my-5 col-5">
-  <div class="card-body">
-
-    <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie)" class="ms-3">
-
-      <div class="form-group">
-
-        <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title" [(ngModel)]="title">
-
-      </div>
-      <button type="submit" class="btn btn-warning mt-3">
-        <i class="fa fa-search"></i>
-      </button>
-
-    </form>
-
-  </div>
-</div>
-
-<!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
-
+<h3 class="mt-5 ms-4">Gestion des films événementiels </h3>
 <div class="card my-5">
   <div class="card-body">
-    <form>
-      <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col">Titre</th>
-            <th scope="col">Poster</th>
-            <th scope="col">Date de sortie</th>
-            <th scope="col">Durée</th>
-            <th scope="col">Synospis</th>
-            <th scope="col">Réalisateur</th>
-            <th scope="col">Note</th>
-            <th scope="col">Limite d'âge</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let movieApi of moviesListApi; let i = index">
-            <td>{{ movieApi.Title }}</td>
-            <td><img src="{{ movieApi.Poster }}" width="100"></td>
-            <td>{{ movieApi.Released }}</td>
-            <td>{{ movieApi.Runtime }}</td>
-            <td>{{ movieApi.Plot }}</td>
-            <td>{{ movieApi.Director }}</td>
-            <td>{{ movieApi.imdbRating }}</td>
+    <table class="table table-bordered table-striped">
+      <thead class="table-dark">
+        <tr>
+          <th scope="col">Films évenements</th>
+          <th scope="col">Supprimer un film événement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let movieCaroussel of moviesListCaroussel; let i = index">
+          <td>{{ movieCaroussel.title }}</td>
+            <!-- <img width="100" src="{{ movieCaroussel.producer }}" alt="Affiche du film "> -->
+          <td>
+            <button (click)="handleClickDeleteMovieCaroussel(movieCaroussel )" class="btn btn-danger">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                viewBox="0 0 16 16">
+                <path
+                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                <path fill-rule="evenodd"
+                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+              </svg>
+            </button>
+          </td>
 
-            <td>
-              <select ([ngModel])="ageLimit">
-                <!-- rajouter un champs vide sinon -->
-                <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
-                  [ngValue]="ageLimited"> {{ageLimited}} </option>
-
-              </select>
-            </td>
-
-
-            <td>
-              <button (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
-                <i class="fa fa-plus"></i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </form>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
+
+<button (click)="this.isButtonVisibleAddMovieApi = true ;this.isButtonVisibleAddMovieForm = false"
+  class="btn btn-success mt-2 mb-2">
+
+  <i class="fa fa-search"></i> Ajouter une film à l'aide de la bibliothèque
+
+</button>
+<button (click)="this.isButtonVisibleAddMovieForm = true" (click)="this.isButtonVisibleAddMovieApi = false "
+  class="btn btn-info mt-2 mb-2">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square"
+    viewBox="0 0 16 16">
+    <path
+      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+    <path fill-rule="evenodd"
+      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+  </svg> Ajouter une film à l'aide du formulaire
+</button>
+
+
+
+<!-- Saisie d'un titre pour recherche dans l'API -->
+
+
+<div *ngIf="this.isButtonVisibleAddMovieApi">
+  <h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film à l'aide de la bibliothèque</h3>
+  <div class="card my-5 col-5">
+    <div class="card-body">
+
+      <form #formFindMovie="ngForm" (ngSubmit)="handleClickFindMovie(formFindMovie) ; this.isButtonVisibleDetailMovieApi = false" class="ms-3">
+
+        <div class="form-group">
+
+          <input type="text" placeholder="Titre du film" id="title" class="form-control" name="title"
+            [(ngModel)]="title">
+
+        </div>
+        <button type="submit" class="btn btn-warning mt-3">
+          <i class="fa fa-search"></i>
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Affichage des films de l'API selon la recherche et bouton Ajouter film  -->
+  <button *ngIf="this.isButtonVisibleShowButtonDetail" (click)="this.isButtonVisibleShowButtonDetail = false ; this.isButtonVisibleHideButtonDetail = true ;this.isButtonVisibleDetailMovieApi = true " 
+  class="btn btn-primary mt-2 mb-2">
+
+  <i class="fa fa-search"></i> Afficher plus de détail pour votre recherche
+</button>
+<button *ngIf="this.isButtonVisibleHideButtonDetail" (click)="this.isButtonVisibleHideButtonDetail = false ; this.isButtonVisibleShowButtonDetail = true ; this.isButtonVisibleDetailMovieApi = false" 
+  class="btn btn-warning mt-2 mb-2">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-backspace-fill" viewBox="0 0 16 16">
+    <path d="M15.683 3a2 2 0 0 0-2-2h-7.08a2 2 0 0 0-1.519.698L.241 7.35a1 1 0 0 0 0 1.302l4.843 5.65A2 2 0 0 0 6.603 15h7.08a2 2 0 0 0 2-2V3zM5.829 5.854a.5.5 0 1 1 .707-.708l2.147 2.147 2.146-2.147a.5.5 0 1 1 .707.708L9.39 8l2.146 2.146a.5.5 0 0 1-.707.708L8.683 8.707l-2.147 2.147a.5.5 0 0 1-.707-.708L7.976 8 5.829 5.854z"/>
+  </svg> Ne plus afficher les détails
+</button>
+  <div class="card my-5">
+    <div class="card-body">
+      <form>
+        <table class="table table-bordered table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Titre</th>
+              <th scope="col">Poster</th>
+              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Date de sortie</th>
+              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Durée</th>
+              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Synospis</th>
+              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Réalisateur</th>
+              <th *ngIf="this.isButtonVisibleDetailMovieApi" scope="col">Note</th>
+              <th scope="col">Limite d'âge</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let movieApi of moviesListApi; let i = index">
+              <td>{{ movieApi.Title }}</td>
+              <td><img src="{{ movieApi.Poster }}" width="100"></td>
+
+              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Released }}</td>
+              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Runtime }}</td>
+              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Plot }}</td>
+              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.Director }}</td>
+              <td *ngIf="this.isButtonVisibleDetailMovieApi" >{{ movieApi.imdbRating }}</td>
+
+              <td>
+                <select ([ngModel])="ageLimit">
+                  <!-- rajouter un champs vide sinon -->
+                  <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
+                    [ngValue]="ageLimited"> {{ageLimited}} </option>
+
+                </select>
+              </td>
+              <td>
+                <button (click)="handleClickAddMovie(movieApi, ageLimit)" class="btn btn-primary">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
 
 <!-- Formulaire pour Ajouter un film champs par champs -->
 
-<h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film avec le Formulaire</h3>
+<div *ngIf="this.isButtonVisibleAddMovieForm">
+  <h3 class="mt-5 ms-4 mb-0">Ajouter un nouveau film avec le Formulaire</h3>
 
-<div class="card my-5 col-5">
-  <div class="card-body">
+  <div class="card my-5 col-5">
+    <div class="card-body">
 
-    <form #addMovieForm="ngForm" (ngSubmit)="handleClickAddMovieByForm(addMovieForm)" class="ms-3">
+      <form #addMovieForm="ngForm" (ngSubmit)="handleClickAddMovieByForm(addMovieForm)" class="ms-3">
 
-      <div class="form-group">
+        <div class="form-group">
 
-        <label for="title">Titre du film</label>
-        <input type="text" id="title" name="title" class="form-control" ngModel>
+          <label for="title">Titre du film</label>
+          <input type="text" id="title" name="title" class="form-control" ngModel>
 
-        <label for="producer">Producteur</label>
-        <input type="text" id="producer" name="producer" class="form-control" ngModel>
+          <label for="producer">Producteur</label>
+          <input type="text" id="producer" name="producer" class="form-control" ngModel>
 
-        <label for="releaseDate">Date de sortie</label>
-        <input type="text" id="releaseDate" name="releaseDate" class="form-control" ngModel>
+          <label for="releaseDate">Date de sortie</label>
+          <input type="text" id="releaseDate" name="releaseDate" class="form-control" ngModel>
 
-       
 
-        <label for="synopsys">Synopsys</label>
-        <input type="text" ngModel id="synopsys" name="synopsys" class="form-control">
 
-        <label for="duration">Durée du film</label>
-        <input type="text" ngModel id="duration" name="duration" class="form-control">
-      <br>
-        <label for="ageLimit">Âge Limite</label>
-        <br>
-        <select name="ageLimit" ([ngModel])="ageLimit">
-          <!-- rajouter un champs vide sinon -->
-          <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
-            [ngValue]="ageLimited"> {{ageLimited}} </option>
-        </select>
-        <br><br>
+          <label for="synopsys">Synopsys</label>
+          <input type="text" ngModel id="synopsys" name="synopsys" class="form-control">
 
-        <label for="poster">Téléchargez une affiche</label>
-        <br>
-        <input type="file" class="form-control-file" id="poster">
-        <br>
-        <button type="submit" class="btn btn-primary mt-3">
-          <i class="fa fa-plus"></i>
-        </button>
-        <br>
-      </div>
-    </form>
+          <label for="duration">Durée du film</label>
+          <input type="text" ngModel id="duration" name="duration" class="form-control">
+          <br>
+          <label for="ageLimit">Âge Limite</label>
+          <br>
+          <select ([ngModel])="ageLimit">
+            <!-- rajouter un champs vide sinon -->
+            <option (click)="addAgeLimit(ageLimited)" *ngFor="let ageLimited of valueAgeLimit; let i = index"
+              [ngValue]="ageLimited"> {{ageLimited}} </option>
 
+          </select>
+          <br><br>
+
+          <label for="poster">Téléchargez une affiche</label>
+          <br>
+          <input type="file" class="form-control-file" id="poster">
+          <br>
+          <button type="submit" class="btn btn-primary mt-3">
+            <i class="fa fa-plus"></i>
+          </button>
+          <br>
+        </div>
+      </form>
+
+    </div>
   </div>
 </div>
