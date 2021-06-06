@@ -1,0 +1,29 @@
+.app-profile{
+    background-color: rgb(48, 48, 48);
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+    width: 800px;
+    color: white;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.app-personal-title{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.profile-img-card {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
