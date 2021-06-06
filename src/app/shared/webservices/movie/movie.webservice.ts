@@ -70,6 +70,11 @@ export class MovieWebService {
     return this.http.put<Movie>(`${this.urlMovies}/comments/${id}`, movie); 
   }
 
+  // //recup des 6 dernieres affiche
+  // getMoviesBanniere(): Observable<Movie[]> {
+  //   return this.http.get<Movie[]>(this.urlSpringMovies + 'movie');
+  // }
+
 
   //---------------------------------------------------------------------------
 
@@ -92,5 +97,6 @@ export class MovieWebService {
     return this.http.post<MovieComments>(`${this.urlMovies}/comments`, newComment);
 
   }
+  
 
 }
