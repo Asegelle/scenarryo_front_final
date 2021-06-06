@@ -16,23 +16,25 @@ export class HomePageComponent implements OnInit {
 
   content?: string;
   moviesList: Movie[] = [];
+  moviesListCaroussel: Movie[] = [];
 
-  constructor(private movieWebService: MovieWebService,private userService: UserService,  private router: Router) {
+  constructor(private movieWebService: MovieWebService, private userService: UserService, private router: Router) {
 
   }
 
   ngOnInit(): void {
-    
+
     this.movieWebService.getMovies()
       .subscribe(data => {
         this.moviesList = data;
-    });
+      });
 
+      this.getAllMovieFroCaroussel();
 
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
-        
+
       },
       err => {
         this.content = JSON.parse(err.error).message;
@@ -42,21 +44,32 @@ export class HomePageComponent implements OnInit {
   
 
 
-  handleClickDetailsMovie(movie:Movie){
-    let queryNavigation : NavigationExtras = {
-      queryParams : {
-        idMovie : movie.id
+  // For Caroussel
+  getAllMovieFroCaroussel() {
+
+    this.movieWebService.GetMovieForCaroussel()
+      .subscribe(data => {
+        this.moviesListCaroussel = data;
+        console.log('G Unit' + data);
+      });
+  }
+
+
+  handleClickDetailsMovie(movie: Movie) {
+    let queryNavigation: NavigationExtras = {
+      queryParams: {
+        idMovie: movie.id
       }
     }
-    console.log("movie.id",movie.id);
-    this.router.navigate(['/page-movie-details'],queryNavigation);
+    console.log("movie.id", movie.id);
+    this.router.navigate(['/page-movie-details'], queryNavigation);
 
 
-}
-  
+  }
+
 
   onDestroy() {
   }
 
-  
+
 }

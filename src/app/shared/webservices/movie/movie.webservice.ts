@@ -62,10 +62,28 @@ export class MovieWebService {
     return this.http.post<Movie>(this.urlSpringMovies + 'deletemovie', deleteMovie);
   }
 
-  addMovieService(newMovie: Movie): Observable<Movie> {
+
+ addMovieService(newMovie: Movie): Observable<Movie> {
     return this.http.post<Movie>(this.urlSpringMovies + 'addmovie', newMovie);
 
   } 
+  ///////////////////////////////// Caroussel ///////////////////////////////////////////////////
+
+  GetMovieForCaroussel(): Observable<Movie[]> {
+    return this.http.get<Movie[]>(this.urlSpringMovies + 'moviecaroussel');
+  }
+
+  addMovieCarousselService(addMovieCaroussel: Movie): Observable<Movie> {
+    return this.http.post<Movie>(this.urlSpringMovies + 'addmoviecaroussel', addMovieCaroussel);
+  }
+
+  deleteMovieCarousselService(deleteMovieCaroussel: Movie): Observable<Movie> {    
+    return this.http.post<Movie>(this.urlSpringMovies + 'deletemoviecaroussel', deleteMovieCaroussel);
+  }
+
+  
+
+ 
 
 
   //---------------------------------------------------------------------------

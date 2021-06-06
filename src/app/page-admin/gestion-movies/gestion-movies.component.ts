@@ -22,6 +22,13 @@ export class GestionMoviesComponent implements OnInit {
   ageLimit = null;
   ageLimited = '';
   age = null;
+  isButtonVisibleAddMovieApi:boolean = false; // valeur True laisse afficher
+  isButtonVisibleAddMovieForm:boolean = false; //valeur false rends invisble
+  moviesListCaroussel: Movie[] = [];
+  isButtonVisibleDetailMovieApi:boolean = false; //valeur false rends invisble
+  isButtonVisibleHideButtonDetail:boolean = false; //valeur false rends invisble
+  isButtonVisibleShowButtonDetail:boolean = true;
+  isButtonVisibleShowTable:boolean = false;
 
 
   constructor(private movieWebService: MovieWebService, private http: HttpClient) { }
@@ -34,6 +41,8 @@ export class GestionMoviesComponent implements OnInit {
       .subscribe(data => {
         this.moviesList = data;
       });
+
+      this.getAllMovieFroCaroussel();
 
     // Instantiation des ages limites à afficher en BDD
     this.valueAgeLimit[0] = 'Tous public';
@@ -50,14 +59,50 @@ export class GestionMoviesComponent implements OnInit {
   handleClickDeleteMovie(deleteMovie: Movie): void {
 
     this.movieWebService.deleteMovieService(deleteMovie).subscribe(
-      (data: Movie) => {
-        data = deleteMovie;
-
+      (dataDelete: Movie) => {
+        dataDelete = deleteMovie;
+        
         // refresh components after click
         this.ngOnInit();
       });
 
   }
+
+    // For Caroussel
+    getAllMovieFroCaroussel() {
+
+      this.movieWebService.GetMovieForCaroussel()
+        .subscribe(data => {
+          this.moviesListCaroussel = data;
+          console.log('G Unit' + data);
+        });
+    }
+// Fonction ajouter un film dans le caroussel
+
+  handleClickAddMovieCaroussel(addMovieCaroussel: Movie) :void {
+    this.movieWebService.addMovieCarousselService(addMovieCaroussel).subscribe(
+      (dataAdd: Movie) => {
+        dataAdd = addMovieCaroussel;
+        // refresh components after click
+        this.ngOnInit();
+        // cacher le bouton avec une boolean si appuyer
+      });
+  }
+
+  // Fonction supprimer un film dans le caroussel
+  handleClickDeleteMovieCaroussel(deleteMovieCaroussel: Movie):void {
+   
+    this.movieWebService.deleteMovieCarousselService(deleteMovieCaroussel).subscribe(
+      (dataDelete: Movie) => {
+        dataDelete = deleteMovieCaroussel;
+        
+        this.ngOnInit();
+        
+      });
+  }
+
+
+
 
   // Fonction recherche par titre sur l'API
 
@@ -112,17 +157,19 @@ export class GestionMoviesComponent implements OnInit {
   
 
   // fonction complementaire, récupère l'age limit pour ajout film dans base de donnée
-  addAgeLimit(age: string) {
-    this.movie.ageLimited = age;
-    console.log('fonction ageLimit' + this.movie.ageLimited);
+  addAgeLimit(ageLimit: any) {
+    
+    this.movie.ageLimited = ageLimit;
+    console.log('ageLimit ' + this.movie.ageLimited);
 
   }
 
   // Fonction ajout d'un film en base de donnée 
 
   handleClickAddMovie(movieApi: any): void {
-   
-    this.movie.id = 0;
+ 
+
+   this.movie.id = 0;
     this.movie.title = movieApi.Title
     this.movie.producer = movieApi.Director;
     this.movie.releaseDate = movieApi.Released;
@@ -131,8 +178,8 @@ export class GestionMoviesComponent implements OnInit {
     this.movie.poster = movieApi.Poster;
 
     this.movieWebService.addMovieService(this.movie).subscribe(
-      (data: Movie) => {
-        data = this.movie;
+      (dataAddMovie: Movie) => {
+        dataAddMovie = this.movie;
 
         // refresh components after click
         this.ngOnInit();
