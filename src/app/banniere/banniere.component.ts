@@ -15,6 +15,17 @@ export class BanniereComponent implements OnInit {
   positionPoster:number = 0;
   zoomPosterValue:number;
   WIDTH_POSTER = 110;
+  backgroundColorButton0:string;
+  backgroundColorButton1:string;
+  backgroundColorButton2:string;
+  backgroundColorButton3:string;
+  backgroundColorButton4:string;
+  backgroundColorButton5:string;
+  backgroundColorButton6:string;
+  backgroundColorButton7:string;
+  backgroundColorButton8:string;
+
+  // indexPoster:number;
   // isAvailable;
   // marginValue:number;
 
@@ -68,9 +79,24 @@ export class BanniereComponent implements OnInit {
 
     console.log(this.positionPoster);
     //change class pour remettre en place le css
-    if(this.positionPoster === 1){
-
-    }
+    
+    /////////////////////////////////////////////////
+    ////// TODO //////////////////////////////////////
+    /////////////////////////////////////////////////
+    //changer quand on clique sur precedent/suivant changement couleur button en bas
+    // if(this.positionPoster === 0){
+    //   this.btnPoster0();
+    // } else if (this.positionPoster === 1){
+    //   this.btnPoster1();
+    // } else if (this.positionPoster === 2){
+    //   this.btnPoster2();
+    // } else if (this.positionPoster === 3){
+    //   this.btnPoster3();
+    // } else if (this.positionPoster === 4){
+    //   this.btnPoster4();
+    // } else if (this.positionPoster === 5){
+    //   this.btnPoster5();
+    // }
       
     
     console.log('handleClickBtnPrecedent');
@@ -111,7 +137,7 @@ export class BanniereComponent implements OnInit {
 
 
   handleGetPosterClass(index:number) {
-    
+    // this.indexPoster = index; //recupère l'index des Poster () 
     let resultIndex = index + this.positionPoster;
     
     //stop la banniere quand on est au extremité
@@ -121,9 +147,9 @@ export class BanniereComponent implements OnInit {
       resultIndex = 8;
     }
 console.log( "result index : " +index+  "pos:" + this.positionPoster)
-    /////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////  change class de chaque image afin d'adapté le css selon la navigation   ///////
-    //////////////////////////////////////////////////////////////////////////////////////////
+console.log('resultIndex : ' + resultIndex);    
+/////////////////////////////////////////////////////////////////////////////////////////////
+/////////////  change class de chaque image afin d'adapté le css selon la navigation   ////////////////////////////////////////////////////////////////////////////////////////////////
     //image0 && position a partir de 0 au milieu du caroussel 
     // le premier est un test qui modifie l'image la plus a gauche du carroussel quand on clique une fois sur suivant
     
@@ -180,30 +206,111 @@ console.log( "result index : " +index+  "pos:" + this.positionPoster)
   /////////////////////////////////
 
   btnPoster0() {
-
+     this.positionPoster = 4;
+     this.backgroundColorButton0 = "rgb(54, 50, 50)";
+     this.backgroundColorButton1 = "white";
+     this.backgroundColorButton2 = "white";
+     this.backgroundColorButton3 = "white";
+     this.backgroundColorButton4 = "white";
+     this.backgroundColorButton5 = "white";
+     this.backgroundColorButton6 = "white";
+     this.backgroundColorButton7 = "white";
+     this.backgroundColorButton8 = "white";
   }
   btnPoster1() {
-    
+    this.positionPoster = 3;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "rgb(54, 50, 50)";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster2() {
-    
+    this.positionPoster = 2;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "rgb(54, 50, 50)";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster3() {
-    
+    this.positionPoster = 1;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "rgb(54, 50, 50)";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster4() {
-    
+    this.positionPoster = 0;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "rgb(54, 50, 50)";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster5() {
-    
+    this.positionPoster = -1;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "rgb(54, 50, 50)";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster6() {
-    
+    this.positionPoster = -2;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "rgb(54, 50, 50)";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster7() {
-    
+    this.positionPoster = -3;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "rgb(54, 50, 50)";
+    this.backgroundColorButton8 = "white";
   }
   btnPoster8() {
-    
+    this.positionPoster = -4;
+    this.backgroundColorButton0 = "white";
+    this.backgroundColorButton1 = "white";
+    this.backgroundColorButton2 = "white";
+    this.backgroundColorButton3 = "white";
+    this.backgroundColorButton4 = "white";
+    this.backgroundColorButton5 = "white";
+    this.backgroundColorButton6 = "white";
+    this.backgroundColorButton7 = "white";
+    this.backgroundColorButton8 = "rgb(54, 50, 50)";
   }
 }

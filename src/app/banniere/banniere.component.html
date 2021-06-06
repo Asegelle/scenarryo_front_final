@@ -12,14 +12,19 @@
         <button class="btnSuivant" (click)="handleClickBtnSuivant()"> > </button>
     <!-- </div> -->
     <div class="linkPoster">
-        <button (click)="btnPoster0()" class="linkclass linkPoster0"></button>
-        <button (click)="btnPoster1()" class="linkclass linkPoster1"></button>
-        <button (click)="btnPoster2()" class="linkclass linkPoster2"></button>
-        <button (click)="btnPoster3()" class="linkclass linkPoster3"></button>
-        <button (click)="btnPoster4()" class="linkclass linkPoster4"></button>
-        <button (click)="btnPoster5()" class="linkclass linkPoster5"></button>
-        <button (click)="btnPoster6()" class="linkclass linkPoster6"></button>
-        <button (click)="btnPoster7()" class="linkclass linkPoster7"></button>
-        <button (click)="btnPoster8()" class="linkclass linkPoster8"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton0}" (click)="btnPoster0()" class="linkclass linkPoster0"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton1}" (click)="btnPoster1()" class="linkclass linkPoster1"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton2}" (click)="btnPoster2()" class="linkclass linkPoster2"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton3}" (click)="btnPoster3()" class="linkclass linkPoster3"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton4}" (click)="btnPoster4()" class="linkclass linkPoster4"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton5}" (click)="btnPoster5()" class="linkclass linkPoster5"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton6}" (click)="btnPoster6()" class="linkclass linkPoster6"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton7}" (click)="btnPoster7()" class="linkclass linkPoster7"></button>
+        <button [ngStyle]="{'background-color': backgroundColorButton8}" (click)="btnPoster8()" class="linkclass linkPoster8"></button>
     </div>
+    <!-- <div *ngFor="let movie of moviesList; let i = index" class="linkPoster">
+        <button (click)="btnPoster + i + (i)" class="linkclass linkPoster + i"></button>
+    </div> -->
 </div>
+
+<!-- [ngClass]="handleGetButtonClass(i)"  -->
