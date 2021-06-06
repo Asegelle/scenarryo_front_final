@@ -119,3 +119,44 @@
 
     
 }
+
+
+.app-container-pub{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+.app-container-pub__left{
+    width: 500px;
+    height: 280px;
+}
+.app-container-pub__right{
+    width: 500px;
+}
+
+.app-title{
+    font-size: 2em;
+    color: black;
+    font-weight: bolder;
+    color: red;
+    text-shadow: 2px 2px 2px  black;
+    margin-bottom: 0px;
+}
+
+.app-title--color {
+    color :rgb(0, 190, 0);
+}
+
+.app-text{
+    font-size: 1.2em;
+    color: black;
+}
+
+.app-button{
+    box-shadow: 3px 3px 3px rgb(54, 44, 0);
+}
